@@ -711,6 +711,7 @@ function renderDue(){
   h+=`</div>`;
   // type filter: All / Readings / Deliverables
   h+=`<div class="dc-filters"><button class="dc-filter ftype${dueTypeFilter==="all"?" active":""}" onclick="dueTypeFilter='all';render()">All Types</button><button class="dc-filter ftype${dueTypeFilter==="readings"?" active":""}" onclick="dueTypeFilter='readings';render()">📖 Reading/Other</button><button class="dc-filter ftype${dueTypeFilter==="deliverables"?" active":""}" onclick="dueTypeFilter='deliverables';render()">✅ Deliverables</button></div>`;
+  h+=`<div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:8px 10px;font-size:9px;line-height:1.5;color:#92400e;margin-bottom:10px;">⚠️ Due dates are sourced from course syllabi and are subject to change. This site will attempt to integrate with Canvas and Blackboard where possible. The owner of this site is not responsible or liable for any date discrepancies, schedule changes, or missed deadlines. Always verify due dates directly with your instructor, Canvas, or Blackboard.</div>`;
 
   const filtered=assignments.filter(a=>vc.includes(a.cls)).filter(a=>dueFilter==="all"||a.cls===dueFilter).filter(matchesDueType);
 
