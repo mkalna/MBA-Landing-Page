@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fall 2026 — MBA Hub</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --red:#990000;--red-light:#f5e6e6;--red-dark:#6b0000;
+    --navy:#122851;--navy-light:#e8ecf3;--navy-dark:#0a1a36;
+    --teal:#00857c;--teal-light:#e0f5f3;--lteal:#50c2bb;
+    --mauve:#7A7089;--mauve-light:#edeaf0;
+    --wblue:#669DE5;--wblue-light:#e4eefb;--dwblue:#2274E2;
+    --bg:#f5f4f1;--surface:#fff;--text:#1c1917;--text2:#5c5856;--text3:#9a9590;
+    --border:#ddd9d4;--border2:#ccc7c1;
+    --inperson:#eab308;--inperson-light:#fef9c3;--inperson-text:#854d0e;
+    --async:#3b82f6;--async-light:#dbeafe;--async-text:#1e40af;
+    --danger:#b91c1c;--success:#16a34a;--radius:10px;
+    --tag-networking:#00857c;--tag-networking-light:#e0f5f3;
+    --tag-social:#669DE5;--tag-social-light:#e4eefb;
+    --tag-robins:#990000;--tag-robins-light:#f5e6e6;
+    /* muted UR filter accents */
+    --f-blue:#3d5687;--f-blue-bd:#c7d0e2;
+    --f-red:#9a4b53;--f-red-bd:#e6cdd0;
+  }
+  body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+  .page{max-width:1260px;margin:0 auto;padding:20px 16px;}
+  .hero{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 60%,#1a3566 100%);color:#fff;border-radius:16px;padding:28px 32px 24px;margin-bottom:16px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;bottom:-30px;left:-30px;width:180px;height:180px;background:radial-gradient(circle,rgba(153,0,0,.25) 0%,transparent 70%);border-radius:50%;}
+  .hero::after{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(102,157,229,.15) 0%,transparent 70%);border-radius:50%;}
+  .hero h1{font-size:26px;font-weight:700;letter-spacing:-0.8px;margin-bottom:2px;position:relative;}
+  .hero .subtitle{font-size:13px;color:#a8b5ca;font-weight:500;position:relative;}
+  .hero .legend{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;position:relative;}
+  .hero .leg-item{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;}
+  .leg-dot{width:12px;height:12px;border-radius:3px;}
+
+  .tabs{display:flex;gap:4px;margin-bottom:14px;background:var(--surface);border-radius:10px;padding:4px;border:1.5px solid var(--border);width:fit-content;}
+  .tab{padding:8px 20px;border-radius:8px;border:none;background:transparent;color:var(--text2);font:600 12px 'DM Sans',sans-serif;cursor:pointer;}
+  .tab.active{background:var(--navy);color:#fff;}
+
+  .content{display:grid;grid-template-columns:1fr;gap:16px;}
+
+  /* Panels */
+  .panel{background:var(--surface);border-radius:var(--radius);border:1.5px solid var(--border);overflow:hidden;}
+  .panel-header{padding:14px 16px 10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--border);}
+  .panel-header h2{font-size:16px;font-weight:700;}
+  .panel-body{padding:12px 16px 16px;}
+
+  /* Month Nav */
+  .month-nav{display:flex;gap:3px;flex-wrap:wrap;align-items:center;}
+  .month-nav button{padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font:600 10px 'DM Sans',sans-serif;cursor:pointer;}
+  .month-nav button.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .view-toggle{display:flex;gap:2px;margin-left:6px;background:var(--bg);border-radius:6px;padding:2px;}
+  .view-toggle button{padding:3px 10px;border-radius:5px;border:none;background:transparent;color:var(--text3);font:600 10px 'DM Sans',sans-serif;cursor:pointer;}
+  .view-toggle button.active{background:var(--surface);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.1);}
+  .week-nav{display:flex;gap:4px;align-items:center;}
+  .week-nav button{padding:3px 10px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font:600 10px 'DM Sans',sans-serif;cursor:pointer;}
+  .week-nav .wn-label{font-size:11px;font-weight:600;min-width:120px;text-align:center;}
+
+  /* Calendar grid */
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--border);}
+  .cal-dayhead{background:var(--bg);padding:6px 4px;font-size:10px;font-weight:700;text-align:center;color:var(--text2);}
+  .cal-cell{background:var(--surface);min-height:80px;padding:4px;position:relative;}
+  .cal-cell.other-month{background:#fafaf8;opacity:.5;}
+  .cal-cell.today{box-shadow:inset 0 0 0 2px var(--navy);}
+  .cal-num{font-size:11px;font-weight:600;margin-bottom:2px;color:var(--text2);}
+  .cal-evt{font-size:9px;font-weight:600;padding:2px 4px;border-radius:3px;margin-bottom:1px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;border-left:3px solid transparent;}
+  .cal-evt.inperson{background:var(--inperson-light);color:var(--inperson-text);border-left-color:var(--inperson);}
+  .cal-evt.async{background:var(--async-light);color:var(--async-text);border-left-color:var(--async);}
+  .cal-evt.standard{border-left-width:3px;}
+  .cal-evt.final-evt{background:#fce7f3;color:#9d174d;border-left-color:#ec4899;}
+  .cal-evt.due-evt{background:#fee2e2;color:#b91c1c;border-left-color:#dc2626;}
+
+  /* Week view for calendar */
+  .cal-week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--border);}
+  .cal-week-cell{background:var(--surface);min-height:100px;padding:6px;}
+  .cal-week-cell.today{box-shadow:inset 0 0 0 2px var(--navy);}
+  .cal-week-dayhead{font-size:10px;font-weight:700;color:var(--text3);margin-bottom:2px;}
+  .cal-week-date{font-size:14px;font-weight:700;margin-bottom:4px;}
+
+  /* Due dates */
+  .wdi{padding:8px 0;border-bottom:1px solid var(--border);}
+  .wdi:last-child{border-bottom:none;}
+  .wdi-row{display:flex;align-items:center;gap:8px;cursor:pointer;}
+  .wdi-check{width:18px;height:18px;border-radius:5px;border:2px solid var(--border2);background:var(--surface);cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;}
+  .wdi-check.checked{background:var(--success);border-color:var(--success);}
+  .wdi-body{flex:1;min-width:0;}
+  .wdi-title{font-size:12px;font-weight:600;}
+  .wdi-title.struck{text-decoration:line-through;color:var(--text3);}
+  .wdi-meta{font-size:10px;color:var(--text2);margin-top:2px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+  .wdi-class-tag{font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;}
+  .wdi-type{font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;}
+  .wdi-type.reading{background:#dbeafe;color:#1e40af;}
+  .wdi-type.presentation{background:#fce7f3;color:#9d174d;}
+  .wdi-type.quiz{background:#fee2e2;color:#b91c1c;}
+  .wdi-type.deliverable{background:#e0f5f3;color:#065f56;}
+  .wdi-type.paper{background:#fef3c7;color:#92400e;}
+  .wdi-type.discussion{background:#edeaf0;color:#5b4f6e;}
+  .wdi-type.other{background:#e8ecf3;color:#122851;}
+  .wdi-chevron{font-size:10px;color:var(--text3);transition:transform .2s;flex-shrink:0;}
+  .wdi-chevron.open{transform:rotate(90deg);}
+  .wdi-detail{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .wdi-detail.open{max-height:300px;}
+  .wdi-detail-row{display:flex;gap:8px;font-size:11px;padding:4px 0 0 26px;color:var(--text2);}
+  .wdi-detail-label{font-weight:700;color:var(--text);min-width:50px;}
+  .wdi-edit{width:auto;padding:4px 10px;border-radius:4px;border:1px solid var(--border);background:var(--surface);cursor:pointer;font:600 10px 'DM Sans',sans-serif;color:var(--text2);margin-left:26px;margin-top:4px;}
+
+  .dc-filters{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px;}
+  .dc-filter{padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font:600 10px 'DM Sans',sans-serif;cursor:pointer;}
+  .dc-filter.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .dc-filter.fclass{color:var(--f-blue);border-color:var(--f-blue-bd);}
+  .dc-filter.fclass.active{background:var(--f-blue);color:#fff;border-color:var(--f-blue);}
+  .dc-filter.ftype{color:var(--f-red);border-color:var(--f-red-bd);}
+  .dc-filter.ftype.active{background:var(--f-red);color:#fff;border-color:var(--f-red);}
+
+  .add-btn{width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1.5px dashed var(--border2);background:transparent;color:var(--text2);font:700 11px 'DM Sans',sans-serif;cursor:pointer;}
+  .add-btn:hover{border-color:var(--navy);color:var(--navy);}
+  .empty{text-align:center;padding:24px 0;color:var(--text3);font-size:12px;}
+
+  /* Social */
+  .soc-legend{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+  .soc-legend-item{display:flex;align-items:center;gap:4px;font-size:10px;font-weight:600;cursor:pointer;padding:3px 8px;border-radius:5px;border:1px solid transparent;transition:all .15s;}
+  .soc-legend-item.active{border-color:currentColor;opacity:1;}
+  .soc-legend-item.dimmed{opacity:.4;}
+  .soc-legend-dot{width:8px;height:8px;border-radius:2px;}
+  .soc-evt{border-bottom:1px solid var(--border);padding:6px 0;}
+  .soc-evt:last-child{border-bottom:none;}
+  .soc-evt-row{display:flex;align-items:center;gap:8px;cursor:pointer;}
+  .soc-icon{font-size:16px;flex-shrink:0;}
+  .soc-body{flex:1;min-width:0;}
+  .soc-title{font-size:12px;font-weight:600;}
+  .soc-meta{font-size:10px;color:var(--text2);margin-top:2px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+  .soc-tag{font-size:8px;font-weight:700;padding:1px 5px;border-radius:3px;}
+  .soc-detail{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .soc-detail.open{max-height:600px;}
+
+  /* Modal */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:100;display:none;}
+  .overlay.open{display:flex;}
+  .modal{background:var(--surface);border-radius:14px;padding:22px;width:92%;max-width:400px;box-shadow:0 20px 60px rgba(0,0,0,.25);}
+  .modal h3{font-size:16px;font-weight:700;margin-bottom:14px;}
+  .modal label{display:block;font-size:10px;font-weight:600;color:var(--text2);margin:6px 0 3px;}
+  .modal input,.modal select,.modal textarea{width:100%;padding:8px 10px;border-radius:7px;border:1.5px solid var(--border);font:400 13px 'DM Sans',sans-serif;outline:none;margin-bottom:4px;}
+  .modal input:focus,.modal select:focus,.modal textarea:focus{border-color:var(--navy);}
+  .m-actions{display:flex;gap:6px;margin-top:16px;}
+  .m-actions .del{padding:9px 14px;border-radius:7px;border:none;background:#fee2e2;color:var(--danger);font:700 12px 'DM Sans',sans-serif;cursor:pointer;}
+  .m-actions .cancel{padding:9px 14px;border-radius:7px;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font:600 12px 'DM Sans',sans-serif;cursor:pointer;}
+  .m-actions .save{padding:9px 18px;border-radius:7px;border:none;background:var(--navy);color:#fff;font:700 12px 'DM Sans',sans-serif;cursor:pointer;}
+  .tag-picker{display:flex;gap:4px;flex-wrap:wrap;margin-top:2px;}
+  .tag-picker button{padding:4px 10px;border-radius:5px;font:600 10px 'DM Sans',sans-serif;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);}
+  .tag-picker button.sel{border-color:currentColor;}
+
+  .month-picker-wrap{position:relative;display:inline-block;}
+  .mini-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--border);}
+  .mini-cal-cell{background:var(--surface);min-height:54px;padding:3px;position:relative;cursor:pointer;}
+  .mini-cal-cell:hover{background:var(--bg);}
+  .mini-cal-cell.other-month{background:#fafaf8;opacity:.45;}
+  .mini-cal-cell.today{box-shadow:inset 0 0 0 2px var(--navy);}
+  .mini-cal-num{font-size:10px;font-weight:600;color:var(--text2);margin-bottom:1px;}
+  .mini-cal-dots{display:flex;flex-direction:column;gap:1px;}
+  .mini-cal-dot{font-size:7px;font-weight:700;padding:1px 3px;border-radius:2px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.3;}
+  .mini-cal-more{font-size:7px;color:var(--text3);font-weight:700;padding:0 3px;}
+
+  /* Popover card */
+  .popover-backdrop{position:fixed;inset:0;z-index:90;}
+  .popover{position:fixed;z-index:95;background:var(--surface);border-radius:12px;border:1.5px solid var(--border);box-shadow:0 12px 40px rgba(0,0,0,.18);padding:16px;width:300px;max-height:70vh;overflow-y:auto;}
+  .popover-title{font-size:14px;font-weight:700;margin-bottom:6px;}
+  .popover-meta{font-size:10px;color:var(--text2);display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px;}
+  .popover-section{margin-bottom:6px;}
+  .popover-label{font-size:10px;font-weight:700;color:var(--text);margin-bottom:2px;}
+  .popover-text{font-size:11px;color:var(--text2);line-height:1.6;}
+  .popover-close{position:absolute;top:10px;right:12px;background:none;border:none;font-size:16px;cursor:pointer;color:var(--text3);padding:2px 6px;border-radius:4px;}
+  .popover-close:hover{background:var(--bg);color:var(--text);}
+  .month-picker-btn{padding:0;border:none;background:none;font:700 16px 'DM Sans',sans-serif;color:var(--text);cursor:pointer;display:flex;align-items:center;gap:4px;}
+  .month-picker-btn:hover{color:var(--navy);}
+  .month-picker-btn .caret{font-size:10px;transition:transform .2s;}
+  .month-picker-btn .caret.open{transform:rotate(180deg);}
+  .month-dropdown{position:absolute;top:100%;left:0;margin-top:4px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:8px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;z-index:50;min-width:220px;}
+  .month-dropdown button{padding:6px 10px;border-radius:6px;border:none;background:transparent;color:var(--text2);font:600 11px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;}
+  .month-dropdown button:hover{background:var(--bg);}
+  .month-dropdown button.active{background:var(--navy);color:#fff;}
+  .cal-arrow{width:30px;height:30px;border-radius:8px;border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;color:var(--text2);}
+  .cal-arrow:hover{background:var(--bg);color:var(--text);}
+
+  .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--text);color:#fff;padding:9px 22px;border-radius:10px;font:600 12px 'DM Sans',sans-serif;z-index:200;box-shadow:0 6px 20px rgba(0,0,0,.25);display:none;}
+  .toast.show{display:block;}
+  @media(max-width:700px){.page{padding:12px 8px;}.hero{padding:20px 16px 18px;}.hero h1{font-size:22px;}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hero">
+    <h1>MBA Hub — 2026–2027</h1>
+    <div class="subtitle">Aug '26 – Aug '27 · University of Richmond · Robins School of Business</div>
+    <div class="legend">
+      <div class="leg-item"><div class="leg-dot" style="background:var(--inperson)"></div> In-Person</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--async)"></div> Async</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#ec4899"></div> Final</div>
+    </div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div class="content">
+    <div class="panel" id="calPanel"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div class="panel" id="duePanel"></div>
+      <div class="panel" id="socPanel"></div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="dueModal">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h3 id="dueModalTitle">Add Assignment</h3>
+    <label>Title</label><input id="dmTitle" placeholder="e.g. Case Study Analysis"/>
+    <label>Class</label><select id="dmClass"></select>
+    <label>Due Date</label><input id="dmDate" type="date"/>
+    <label>Type</label>
+    <select id="dmType"><option value="deliverable">Deliverable</option><option value="paper">Paper</option><option value="reading">Reading</option><option value="presentation">Presentation</option><option value="quiz">Quiz</option><option value="discussion">Discussion</option><option value="other">Other</option></select>
+    <label>Weight / Points (optional)</label><input id="dmWeight" placeholder="e.g. 20% or 50 pts"/>
+    <label>Notes (optional)</label><textarea id="dmNotes" rows="2" placeholder="e.g. Submit via Canvas"></textarea>
+    <div class="m-actions">
+      <button class="del" id="dmDel" style="display:none" onclick="deleteDue()">Delete</button>
+      <div style="flex:1"></div>
+      <button class="cancel" onclick="closeDueModal()">Cancel</button>
+      <button class="save" onclick="saveDue()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="socModal">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h3 id="socModalTitle">Add Event</h3>
+    <label>Title</label><input id="smTitle" placeholder="e.g. Networking Mixer"/>
+    <label>Date</label><input id="smDate" type="date"/>
+    <label>Start Time</label><input id="smTime" type="time"/>
+    <label>End Time</label><input id="smEndTime" type="time"/>
+    <label>Location</label><input id="smLoc" placeholder="e.g. Ukrop Auditorium"/>
+    <label>Tags</label>
+    <div class="tag-picker" id="smTags"></div>
+    <label>Notes (optional)</label><textarea id="smNotes" rows="2" placeholder="e.g. RSVP by Friday"></textarea>
+    <div class="m-actions">
+      <button class="del" id="smDel" style="display:none" onclick="deleteSocial()">Delete</button>
+      <div style="flex:1"></div>
+      <button class="cancel" onclick="closeSocModal()">Cancel</button>
+      <button class="save" onclick="saveSocial()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<div id="popoverContainer"></div>
+
+<script>
+// ==================== DATA ====================
+const CLASSES={
+  economics:{label:"Economics",prof:"Croushore",day:"Mon",time:"6:15–8:55",cohort:"1st",color:"#7c6f5b",light:"#f0ece4",room:""},
+  accounting:{label:"Accounting",prof:"Geiger",day:"Tue",time:"6:15–8:55",cohort:"1st",color:"#5b7180",light:"#e4ecf0",room:""},
+  analytics:{label:"Analytics",prof:"Whitaker",day:"Mon",time:"6:15–9:45",cohort:"2nd",color:"#6366f1",light:"#e8e8fd",room:"207"},
+  ethics:{label:"Ethics",prof:"Lunn",day:"Tue",time:"6:15–9:45",cohort:"2nd",color:"#d97706",light:"#fef3c7",room:"224"},
+  strategy:{label:"Strategy",prof:"Bosse",day:"Wed",time:"6:15–9:45",cohort:"2nd",color:"#0d9669",light:"#d1fae5",room:"225"},
+};
+
+const SCHEDULE={
+  economics:[["2026-08-24","standard"],["2026-08-31","standard"],["2026-09-07","standard"],["2026-09-14","standard"],["2026-09-21","standard"],["2026-09-28","standard"],["2026-10-05","standard"],["2026-10-19","standard"],["2026-10-26","standard"],["2026-11-02","standard"],["2026-11-09","standard"],["2026-11-16","standard"],["2026-11-30","standard"],["2026-12-07","standard"],["2026-12-14","final"]],
+  accounting:[["2026-08-25","standard"],["2026-09-01","standard"],["2026-09-08","standard"],["2026-09-15","standard"],["2026-09-22","standard"],["2026-09-29","standard"],["2026-10-06","standard"],["2026-10-20","standard"],["2026-10-27","standard"],["2026-11-03","standard"],["2026-11-10","standard"],["2026-11-17","standard"],["2026-12-01","standard"],["2026-12-08","standard"],["2026-12-15","final"]],
+  analytics:[["2026-08-24","async"],["2026-08-31","async"],["2026-09-07","async"],["2026-09-14","inperson"],["2026-09-21","inperson"],["2026-09-28","inperson"],["2026-10-05","inperson"],["2026-10-19","inperson"],["2026-10-26","inperson"],["2026-11-02","inperson"],["2026-11-09","inperson"],["2026-11-16","async"],["2026-11-30","async"],["2026-12-07","inperson"],["2026-12-14","inperson"]],
+  ethics:[["2026-08-25","inperson"],["2026-09-01","inperson"],["2026-09-08","inperson"],["2026-09-15","async"],["2026-09-22","async"],["2026-09-29","async"],["2026-10-06","async"],["2026-10-20","inperson"],["2026-10-27","async"],["2026-11-03","async"],["2026-11-10","async"],["2026-11-17","inperson"],["2026-12-01","inperson"],["2026-12-08","inperson"],["2026-12-15","final"]],
+  strategy:[["2026-08-26","inperson"],["2026-09-02","inperson"],["2026-09-09","inperson"],["2026-09-16","inperson"],["2026-09-23","inperson"],["2026-09-30","inperson"],["2026-10-07","inperson"],["2026-10-14","async"],["2026-10-21","async"],["2026-10-28","async"],["2026-11-04","async"],["2026-11-11","inperson"],["2026-11-18","inperson"],["2026-12-02","inperson"],["2026-12-08","async"],["2026-12-16","final"]],
+};
+
+const MONTHS=[{year:2026,month:7,label:"Aug '26"},{year:2026,month:8,label:"Sep"},{year:2026,month:9,label:"Oct"},{year:2026,month:10,label:"Nov"},{year:2026,month:11,label:"Dec"},{year:2027,month:0,label:"Jan"},{year:2027,month:1,label:"Feb"},{year:2027,month:2,label:"Mar"},{year:2027,month:3,label:"Apr"},{year:2027,month:4,label:"May"},{year:2027,month:5,label:"Jun"},{year:2027,month:6,label:"Jul"},{year:2027,month:7,label:"Aug '27"}];
+
+const TAGS={networking:{label:"Networking",color:"var(--tag-networking)",light:"var(--tag-networking-light)"},social:{label:"Social",color:"var(--tag-social)",light:"var(--tag-social-light)"},robins:{label:"Robins",color:"var(--tag-robins)",light:"var(--tag-robins-light)"}};
+
+const DEFAULT_ASSIGNMENTS=[
+  // ===== ANALYTICS: Async Learning Schedule =====
+  {id:"as1",cls:"analytics",title:"Course Introduction",date:"2026-08-25",time:"",type:"other",weight:"",done:false,
+    notes:"During the last 20 minutes of Professor Lunn's Ethics class on Aug 25, Prof. Whitaker will provide an in-person introduction to Analytics.\n\nStudent Activity:\nAs part of the course introduction, Prof. Whitaker will describe asynchronous learning activities for the weeks of Aug 31 and Sep 7."},
+  {id:"as2",cls:"analytics",title:"Computational Literacy: Pivot Tables & Pivot Charts",date:"2026-08-31",time:"",type:"reading",weight:"",done:false,
+    notes:"ASYNC WEEK — Complete by Sep 7\n\nDescription:\nVideo on Pivot Tables and Pivot Charts for Microsoft Excel, with data files to work alongside.\n\nStudent Activity:\nDownload data files and work alongside the video to reinforce or build new skills with pivot tables and pivot charts. Files are not required to be submitted, but complete by Sep 7. Prof. Whitaker is happy to meet with any student who has questions."},
+  {id:"as3",cls:"analytics",title:"Computational Literacy: Solver & Scenarios",date:"2026-09-07",time:"",type:"reading",weight:"",done:false,
+    notes:"ASYNC WEEK — Complete by Sep 14\n\nDescription:\nVideo on Solver and Scenarios for Microsoft Excel, with data files to work alongside.\n\nStudent Activity:\nDownload data files and work alongside the video to reinforce or build new skills with Solver and Scenarios. Files are not required to be submitted, but complete by Sep 14. Prof. Whitaker is happy to meet with any student who has questions."},
+
+  // ===== ANALYTICS: In-Person Class Sessions =====
+  {id:"as4",cls:"analytics",title:"Data Literacy: Tables I, II, III",date:"2026-09-14",time:"18:15",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — Room 207, 6:15–9:45 PM\n\nSegments:\nA. Tables I\nB. Tables II\nC. Tables III\n\nReading Reference:\nMicrosoft Access 2013: Step by Step (Lambert & Cox) — O'Reilly Books Online\n• Section 1: Explore Microsoft Access 2013 — Understanding database concepts, Exploring tables\n• Section 2: Create databases and simple tables — Creating databases/tables, Manipulating columns/rows, Refining structure, Defining relationships\n• Section 4: Display data — Sorting & filtering\n• Part 3 Section 1: Importing from Excel and text files\n\nVideo Reference:\nLinkedIn Learning: Access 2016 Essential Training (Adam Wilbert)\n• Section 1: Getting started — Key database concepts, Creating database file\n• Section 2: Creating tables — Structure, Data types, Primary/foreign keys, Importing\n• Section 3: Setting field properties — Relationships, Design view"},
+  {id:"as5",cls:"analytics",title:"Data Literacy: Queries I, II, Calculations",date:"2026-09-21",time:"18:15",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — Room 207, 6:15–9:45 PM\n\nSegments:\nA. Queries I\nB. Queries II\nC. Calculations\n\nReading Reference:\nMicrosoft Access 2013: Step by Step (Lambert & Cox)\n• Section 1: Exploring queries\n• Section 7: Create queries — Creating queries manually, Summarizing data, Calculating\n\nVideo Reference:\nLinkedIn Learning: Access 2016 Essential Training (Adam Wilbert)\n• Section 5: Using queries — Design view, Criteria, AND/OR, Math comparisons, Expressions\n• Section 6: Specialty queries — Crosstab queries"},
+  {id:"as6",cls:"analytics",title:"Coding: Load, Format & Analyze Data I",date:"2026-09-28",time:"18:15",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — Room 207, 6:15–9:45 PM\n\nSegments:\nA. Load data\nB. Format data\nC. Analyze data I\n\nReading Reference:\nLearning SAS by Example, 2nd Ed. (Ron Cody)\n• Ch 3: Reading raw data from external files\n• Ch 5: Creating labels and formats\n• Ch 11: Working with numeric functions\n• Ch 12: Working with character functions\n• Ch 16: Summarizing data (PROC MEANS, BY/CLASS statements)\n\nVideo Reference:\nSAS Programming 1: Essentials\n• Lesson 1: Essentials — Programming with SAS Studio, Syntax\n• Lesson 2: Accessing data — Importing files\n• Lesson 3: Exploring and validating data — Formatting values"},
+  {id:"as7",cls:"analytics",title:"Coding: Analyze Data II, III & Report Data",date:"2026-10-05",time:"18:15",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — Room 207, 6:15–9:45 PM\n\nSegments:\nA. Analyze data II\nB. Analyze data III\nC. Report data\n\nReading Reference:\nLearning SAS by Example, 2nd Ed. (Ron Cody)\n• Ch 15: Creating customized reports (PROC REPORT)\n• Ch 17: Counting frequencies (PROC FREQ, two-way/three-way tables)\n• Ch 18: Creating tabular reports (PROC TABULATE)\n• Ch 20: Creating charts and graphs (bar charts, scatter plots, histograms, box plots)\n\nVideo Reference:\nSAS Programming 1: Essentials — Lesson 5: Analyzing and reporting\nSAS Report Writing — Lesson 2: TABULATE, Lesson 4: REPORT"},
+  {id:"as8",cls:"analytics",title:"Business Intelligence: Get Data, Transform & Model",date:"2026-10-19",time:"18:15",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — Room 207, 6:15–9:45 PM\n\nSegments:\nA. Get data\nB. Transform data\nC. Data model\n\nReading Reference:\nLearn Power BI, 2nd Ed. (Greg Deckler)\n• Ch 1: Key concepts — Domain, Data, Model, Analysis\n• Ch 2: Planning projects — Stakeholders, Goals, Data sources, Data model design\n• Ch 4: Connecting to and transforming data — Getting data, Transforming data\n• Ch 5: Creating data models — Model view, Relationships\n\nVideo Reference:\nLinkedIn Learning: Power BI Essential Training (Gini von Courter)\n• Section 1: Power BI concepts\n• Section 2: Get data — Sources, Data hub, Creating datasets\n• Section 8: Model data — Get data, Reduce data, Transform, Relate tables"},
+  {id:"as9",cls:"analytics",title:"Business Intelligence: Calculations, Visualization & Reports",date:"2026-10-26",time:"18:15",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — Room 207, 6:15–9:45 PM\n\nSegments:\nA. Calculations\nB. Visualization\nC. Reports\n\nReading Reference:\nLearn Power BI, 2nd Ed. (Greg Deckler)\n• Ch 1: Visualization concepts\n• Ch 2: Planning reports and dashboards\n• Ch 3: Calculated tables, Calculated columns, Creating/formatting visualizations, Adding analytics\n• Ch 5: Calculated columns\n• Ch 7: Creating page templates\n• Ch 10: Creating and working with dashboards\n\nVideo Reference:\nLinkedIn Learning: Power BI Essential Training (Gini von Courter)\n• Section 3: Create report with visualizations\n• Section 4: Modify and print a report\n• Section 5: Create a dashboard"},
+  {id:"as10",cls:"analytics",title:"Artificial Intelligence: Analysis, Text & Presentations",date:"2026-11-02",time:"18:15",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — Room 207, 6:15–9:45 PM\n\nSegments:\nA. Analysis\nB. Text\nC. Presentations\n\nReading Reference:\nMicrosoft Copilot Pro Step by Step (Lisa Crosbie)\n• Part 2: Copilot on the web\n• Part 3: Copilot in Excel, Outlook, Word, PowerPoint\n\nVideo Reference:\nLinkedIn Learning: Microsoft Copilot Essentials (Microsoft Press)\n• Section 2: Communication — Email triage, Meeting prep\n• Section 3: Writing & creativity — Draft documents, Briefs to presentations, Visual generation\n• Section 4: Analysis — Text-to-analysis in Excel, Exploratory analysis, Research & synthesis"},
+  {id:"as11",cls:"analytics",title:"Artificial Intelligence: Copilot Studio & Agents",date:"2026-11-09",time:"18:15",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — Room 207, 6:15–9:45 PM\n\nReading Reference:\nMicrosoft Copilot Studio Step by Step (Lisa Crosbie)\n• Ch 1: Understanding Copilot Studio and agents\n• Ch 2: Designing effective agents\n• Ch 4: Building agents in Copilot Studio\n• Ch 5: Building autonomous agents\n\nVideo Reference:\nLinkedIn Learning: How to Create AI Agents Like a Pro in Copilot Studio (Microsoft Press)\n• Section 1: Agent Confusion Crisis — Autonomous agents, No-code & low-code agents\n• Section 2: FAQ Responder — Natural language creation, Configure instructions, Publishing agent"},
+
+  // ===== ANALYTICS: Async Project Weeks =====
+  {id:"as12",cls:"analytics",title:"Final Project Design",date:"2026-11-16",time:"",type:"deliverable",weight:"",done:false,
+    notes:"ASYNC WEEK\n\nSubmit a one-page proposal for your final project by Nov 16. Prof. Whitaker will provide feedback by Nov 17, and you will correspond to finalize your project scope by Nov 20.\n\nStudent Activity:\nPreparing and finalizing your final project design will put you in a position to begin your final project work in earnest."},
+  {id:"as13",cls:"analytics",title:"Final Project Consultation",date:"2026-11-30",time:"18:15",type:"other",weight:"",done:false,
+    notes:"ASYNC WEEK — No formal class, but Prof. Whitaker available 6:15–9:45 PM\n\nEven though class does not meet on Nov 30, Prof. Whitaker will be available for in-person or Zoom consultation during class time for any student who wishes to discuss any aspect of their final project.\n\nStudent Activity:\nSet aside time to make progress on your final project and spread your work evenly over time."},
+
+  // ===== ANALYTICS: In-Person Project Work =====
+  {id:"as14",cls:"analytics",title:"Final Project Work — Individual Meetings I",date:"2026-12-07",time:"18:15",type:"other",weight:"",done:false,
+    notes:"IN-PERSON — Room 207, 6:15–9:45 PM\n\nProf. Whitaker will meet with every student individually to make sure every student has a clear plan for success on their final project."},
+  {id:"as15",cls:"analytics",title:"Final Project Work — Individual Meetings II",date:"2026-12-14",time:"18:15",type:"other",weight:"",done:false,
+    notes:"IN-PERSON — Room 207, 6:15–9:45 PM\n\nProf. Whitaker will meet with every student individually to make sure he understands each final project. This is the last class meeting before the final project is due Sunday Dec 20, 9:00 AM."},
+
+  // ===== ANALYTICS: Assignment Due Dates =====
+  {id:"a1",cls:"analytics",title:"Data Literacy Homework I",date:"2026-09-21",time:"17:00",type:"deliverable",weight:"25% (Homework total)",notes:"Submit via Canvas. Collaboration groups of up to 5 allowed — include group member names in submission notes. Submit your own file.",done:false},
+  {id:"a2",cls:"analytics",title:"Data Literacy Homework II",date:"2026-09-28",time:"17:00",type:"deliverable",weight:"25% (Homework total)",notes:"Submit via Canvas. Late submission up to 1 hour after = 50% credit. After 6:01 PM = zero credit.",done:false},
+  {id:"a3",cls:"analytics",title:"Data Literacy Reflection Paper",date:"2026-10-02",time:"17:00",type:"paper",weight:"10% (Reflection total)",notes:"Write thoughtfully and answer honestly. This is your opportunity to communicate directly with Prof. Whitaker about your learning experience.",done:false},
+  {id:"a4",cls:"analytics",title:"Coding Homework I",date:"2026-10-05",time:"17:00",type:"deliverable",weight:"25% (Homework total)",notes:"Submit via Canvas.",done:false},
+  {id:"a5",cls:"analytics",title:"Coding Homework II",date:"2026-10-19",time:"17:00",type:"deliverable",weight:"25% (Homework total)",notes:"Submit via Canvas.",done:false},
+  {id:"a6",cls:"analytics",title:"Coding Reflection Paper",date:"2026-10-23",time:"17:00",type:"paper",weight:"10% (Reflection total)",notes:"",done:false},
+  {id:"a7",cls:"analytics",title:"Business Intelligence Homework I",date:"2026-10-26",time:"17:00",type:"deliverable",weight:"25% (Homework total)",notes:"Submit via Canvas.",done:false},
+  {id:"a8",cls:"analytics",title:"Business Intelligence Homework II",date:"2026-11-02",time:"17:00",type:"deliverable",weight:"25% (Homework total)",notes:"Submit via Canvas.",done:false},
+  {id:"a9",cls:"analytics",title:"Business Intelligence Reflection Paper",date:"2026-11-06",time:"18:00",type:"paper",weight:"10% (Reflection total)",notes:"Note: due at 6:00 PM (not 5:00 PM).",done:false},
+  {id:"a10",cls:"analytics",title:"Artificial Intelligence Homework I",date:"2026-11-09",time:"17:00",type:"deliverable",weight:"25% (Homework total)",notes:"Submit via Canvas.",done:false},
+  {id:"a11",cls:"analytics",title:"Final Project Proposal",date:"2026-11-16",time:"17:00",type:"deliverable",weight:"50% (Final project)",notes:"One-page proposal. Feedback from Prof. Whitaker by Nov 17, finalize scope by Nov 20.",done:false},
+  {id:"a12",cls:"analytics",title:"Artificial Intelligence Reflection Paper",date:"2026-11-20",time:"17:00",type:"paper",weight:"10% (Reflection total)",notes:"",done:false},
+  {id:"a13",cls:"analytics",title:"Final Project",date:"2026-12-20",time:"09:00",type:"deliverable",weight:"50%",notes:"NO EXTENSIONS, NO EXCEPTIONS.\nFinal grades due to Graduate Programs 24 hours later.\n\nSubmit: Access file (database), SAS code + data (coding), Power BI pbix + data (BI), or AI outputs + individual meeting (AI project).",done:false},
+
+  // ===== ETHICS: Session 1 — Aug 25 (In-Person) =====
+  {id:"et1r",cls:"ethics",title:"Session 1 Readings: What is Ethics?",date:"2026-08-25",time:"",type:"reading",weight:"",done:false,
+    notes:"Topic: What is Ethics? An Introduction\n\nTo Read:\na) Wight, Ethics in Economics, Ch 1, \"Why Ethics Matters\"\nb) Badaracco, Defining Moments, Ch 2, pp. 10-14\n\nTopics Covered:\n• Introductions and Course Overview\n• Where this course fits in the MBA curriculum\n• A focus on values and actions\n• Ethical Decision-Making: Relativism, personal values, moral principles, moral reasoning\n• Steve Lewis Case Discussion\n• Introduction to Dr. Jonathan Whitaker and Analytics"},
+  {id:"et1a",cls:"ethics",title:"Pre-Class #1: Ch 1 Reflection (Canvas)",date:"2026-08-25",time:"",type:"deliverable",weight:"Participation (30%)",done:false,
+    notes:"Go to Canvas → Course Documents → Week 1.\n\nAfter reading Chapter 1, close the book. Write out one or two ideas that struck a chord with you. Answer: Have you encountered these ideas before in the workplace? Are there perspectives you would add or disagree with?\n\nBe prepared to discuss your answers in class."},
+  {id:"et1b",cls:"ethics",title:"Pre-Class #2: Ethics in the News (Presentation)",date:"2026-08-25",time:"",type:"presentation",weight:"Participation (30%)",done:false,
+    notes:"Find and read a short current news article (published within the last year) about an ethical situation at an organization. Most articles will describe an ethical dilemma, but you may also identify one about commendable ethical practices.\n\nYou will give a concise two-minute presentation about the organization and article. Give a brief summary and relate it to theories from the assigned readings for Week 1."},
+  {id:"et1c",cls:"ethics",title:"Pre-Class #3: Steve Lewis Case Prep",date:"2026-08-25",time:"",type:"deliverable",weight:"Participation (30%)",done:false,
+    notes:"Read the Steve Lewis \"Crisis of Moral Identity\" case in Defining Moments, pp. 10-14 before class.\n\nWe will discuss this case in class. You will be asked to answer questions about this case. Also available on Canvas."},
+
+  // ===== ETHICS: Session 2 — Sep 1 (In-Person) =====
+  {id:"et2r",cls:"ethics",title:"Session 2 Readings: Ethical Pluralism & Three Moral Frameworks",date:"2026-09-01",time:"",type:"reading",weight:"",done:false,
+    notes:"Topic: What is Ethical Pluralism? Three Moral Frameworks\n\nCanvas → Course Documents → Week 2\n\nConsequentialism (Outcome-Based Ethics):\na) Wight, Ethics in Economics, Ch 2, \"Outcomes\"\nb) Optional: BR 7-9, J.S. Mill, \"What Utilitarianism Is\" (Handout)\n\nDeontology (Duty-Based Ethics):\na) Wight, Ethics in Economics, Ch 3, \"Duties, Rules, and Virtues\" (up to p. 46)\nb) BR 13 B-C, \"Kant's Second Categorical Imperative in Practice\" (Handout)\n\nVirtue (Character-Based Ethics):\na) Wight, Ethics in Economics, Ch 3, \"Duties, Rules, and Virtues\" (p. 46 - end)\nb) Optional: BR 14-15, Aristotle's Virtue Ethics (Handout)"},
+  {id:"et2a",cls:"ethics",title:"Pre-Class #1: Prepare for Discussion & Quiz",date:"2026-09-01",time:"",type:"deliverable",weight:"Participation (30%)",done:false,
+    notes:"Prepare for class discussion and quiz on the three moral frameworks: Consequentialism, Deontology, and Virtue Ethics."},
+  {id:"et2q",cls:"ethics",title:"Quiz: Three Moral Frameworks",date:"2026-09-01",time:"18:15",type:"quiz",weight:"Participation (30%)",done:false,
+    notes:"In-class quiz on Consequentialism, Deontological views, Kantian ethics, Virtue Ethics, Normative Theories, and Ethical Pluralism."},
+
+  // ===== ETHICS: Session 3 — Sep 8 (In-Person) =====
+  {id:"et3r",cls:"ethics",title:"Session 3 Readings: Capitalism & Corporate Responsibility",date:"2026-09-08",time:"",type:"reading",weight:"",done:false,
+    notes:"Topic: Capitalism and Corporate Responsibility\n\nTo Read:\n• Friedman article (Canvas)\n• Nash article (Canvas)\n\nTopics Covered:\n• Key aspects of capitalism\n• Corporate moral agency\n• The social environment today\n• Case Discussions — Corporate Social Responsibility Debate Exercise\n• Stakeholder relations\n• Obligations to society"},
+
+  // ===== ETHICS: Sep 15 (Async) — Midterm Opens =====
+  {id:"et4r",cls:"ethics",title:"Session 4 Readings: Intro to Ethics & Markets",date:"2026-09-15",time:"",type:"reading",weight:"",done:false,
+    notes:"ASYNC WEEK\n\nTo Read:\nWight, Ethics in Economics, Ch 4\n\nMidterm Exam opens — complete anytime between Sep 15 and Sep 22."},
+  {id:"et4m",cls:"ethics",title:"Midterm Exam (Opens Sep 15)",date:"2026-09-15",time:"",type:"quiz",weight:"Midterm (35%)",done:false,
+    notes:"Midterm Exam opens Sep 15. Due by Sep 22.\n\nCombination of multiple choice and short-answer questions. Covers key concepts from the course. No make-up exams."},
+
+  // ===== ETHICS: Sep 22 (Async) — Midterm Due =====
+  {id:"et5r",cls:"ethics",title:"Session 5 Readings: Ethics & Markets",date:"2026-09-22",time:"",type:"reading",weight:"",done:false,
+    notes:"ASYNC WEEK\n\nTo Read:\nWight, Ethics in Economics, Ch 7\n\nTopics: Supply and Demand, Price Controls, Morals and Markets"},
+  {id:"et5m",cls:"ethics",title:"Midterm Exam DUE",date:"2026-09-22",time:"",type:"quiz",weight:"Midterm (35%)",done:false,
+    notes:"Midterm Exam due today. No extensions. No make-up exams."},
+
+  // ===== ETHICS: Sep 29 (Async) =====
+  {id:"et6r",cls:"ethics",title:"Session 6: Markkula Center Videos & Readings",date:"2026-09-29",time:"",type:"reading",weight:"",done:false,
+    notes:"ASYNC WEEK\n\nWatch:\n• \"Building an Ethical Culture — Part I\" (5 min) and Part II (10 min), Markkula Center for Applied Business Ethics\n\nOptional:\n• Markkula Center, \"Ethics and Virtue\" (scu.edu)\n\nRead articles about consequentialism, deontology, and virtue ethics."},
+
+  // ===== ETHICS: Oct 6 (Async) =====
+  {id:"et7a",cls:"ethics",title:"Session 7: AI at Work — Prepare Examples",date:"2026-10-06",time:"",type:"deliverable",weight:"Participation (30%)",done:false,
+    notes:"ASYNC WEEK\n\nThink about how you use AI at work. Be prepared to share examples in class on Oct 20.\n\nWhat are the ethical issues?"},
+
+  // ===== Oct 13 — Fall Break =====
+
+  // ===== ETHICS: Oct 20 (In-Person) =====
+  {id:"et8r",cls:"ethics",title:"Session 8 Readings: AI and Ethics",date:"2026-10-20",time:"",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — Room 224, 6:15–9:45 PM\n\nTopic: AI and Ethics\nGuest Speaker: Brian Gillikin, IBM\n\nTo Read/Discuss:\n• AI Current Event Article (TBD)\n• Burn Book, Chapter 9\n\nPanel Discussion: How do you use AI at work?"},
+
+  // ===== ETHICS: Oct 27 (Async) =====
+  {id:"et9r",cls:"ethics",title:"Session 9: Shannon Vallor — AI as a Mirror",date:"2026-10-27",time:"",type:"reading",weight:"",done:false,
+    notes:"ASYNC WEEK\n\nWatch Shannon Vallor movie — AI as a mirror."},
+
+  // ===== ETHICS: Nov 3 (Async) =====
+  {id:"et10a",cls:"ethics",title:"Session 10: Group Meeting — Select Final Case",date:"2026-11-03",time:"",type:"deliverable",weight:"Team Presentation (35%)",done:false,
+    notes:"ASYNC WEEK\n\nMeet with your group. Select case for final project — topic due Nov 17.\n\nBegin planning final presentation with group.\n\nExample cases: Boeing, Wells Fargo, Blood for Sale, Orchid ID"},
+
+  // ===== ETHICS: Nov 10 (Async) =====
+  {id:"et11r",cls:"ethics",title:"Session 11: Reading for Dr. Bosse's Nov 11 Class",date:"2026-11-10",time:"",type:"reading",weight:"",done:false,
+    notes:"ASYNC WEEK\n\nAssigned reading for Dr. Bosse's November 11th Strategy class:\n• \"I Helped Run Lululemon: Companies Need to Stop Kidding Themselves about AI\" (Julie Averill, 2026)\n• Case: Tyme Group Goes Global\n\nNote: Nov 11 is Dr. Bosse's class on Corporate Governance & Ethics."},
+
+  // ===== ETHICS: Nov 17 (In-Person) =====
+  {id:"et12r",cls:"ethics",title:"Session 12 Readings: Legal & Ethical Issues — Employees",date:"2026-11-17",time:"",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — Room 224, 6:15–9:45 PM\n\nTopic: Legal & Ethical Issues Involving Employees\n\nTo Read & Discuss:\nHBR Enron Case"},
+  {id:"et12a",cls:"ethics",title:"Final Project Topic Due",date:"2026-11-17",time:"",type:"deliverable",weight:"Team Presentation (35%)",done:false,
+    notes:"Submit your group's selected case topic for the final presentation."},
+
+  // ===== Nov 24 — Thanksgiving Break =====
+
+  // ===== ETHICS: Dec 1 (In-Person) =====
+  {id:"et13r",cls:"ethics",title:"Session 13 Readings: Leadership, Ethics & Sustainability",date:"2026-12-01",time:"",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — Room 224, 6:15–9:45 PM\n\nTopics:\n• Leadership & Ethics (Virtue Ethics)\n• Ethics in Advertising & Marketing — Guest Speaker: Ron Carey\n• Sustainability and Ethics — Sustainability Case (TBD)\n• Enron Case Discussion, continued"},
+
+  // ===== ETHICS: Dec 8 (In-Person) =====
+  {id:"et14r",cls:"ethics",title:"Session 14 Readings: International Markets & Last Class",date:"2026-12-08",time:"",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — Room 224, 6:15–9:45 PM — LAST CLASS\n\nTopics:\n• Leadership & Ethics — Guest Speaker\n• Ethical Issues Involving International Markets\n• Roussel-Uclaf Case (Defining Moments)\n• Other Business Ethics Issues\n• Responsibilities to Stakeholders & Employees\n• Group presentations (if needed)"},
+
+  // ===== ETHICS: Dec 15 — Final Presentations =====
+  {id:"et15p",cls:"ethics",title:"FINAL: Group Presentations",date:"2026-12-15",time:"18:15",type:"presentation",weight:"Team Presentation (35%)",done:false,
+    notes:"Tuesday, December 15th, 6:15–9:30 PM\n\nGroup Presentations — Final exam period."},
+
+  // ===== STRATEGY =====
+  {id:"st1",cls:"strategy",title:"Extra Credit: Course Evaluation (SEI) Screenshot",date:"2026-12-08",time:"17:00",type:"deliverable",weight:"1% extra credit",done:false,
+    notes:"Earn 1% extra credit by submitting a screenshot showing you have completed the course evaluation (SEI).\n\nEmail your screenshot to Dr. Bosse by 5:00 PM on December 8, 2026."},
+
+  // Week 1 — Aug 26 (In-Person)
+  {id:"st2",cls:"strategy",title:"Week 1 Prep: Introduction & Firm Performance",date:"2026-08-26",time:"",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — 6:15–9:45 PM\n\nPrepare Before Class:\n• Read syllabus\n• WSJ Practice application (emailed to you)\n• Chapter 1\n• Watch video: \"Inside the Case Method\"\n• Online Tutorial @ HBSP: Case Analysis Coach\n\nIn Class:\n• Introduction\n• Chapter 1: Firm Performance\n• Strategy Tools & Theories\n• Strategic Case Analysis\n• Ideal 10-Slide Deck Template and examples\n• Pick teams (6 teams of 3 people)\n• Pick firm for individual project"},
+
+  // Week 2 — Sep 2 (In-Person)
+  {id:"st3",cls:"strategy",title:"Week 2 Prep: External Analysis",date:"2026-09-02",time:"",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — 6:15–9:45 PM\n\nPrepare Before Class:\n• WSJ Practice application\n• Chapter 2\n• Watch video: \"How to Crack Case Study Interviews\"\n\nIn Class:\n• Problem Identification: External Analysis\n• Chapter 2\n• Case 1: Oura 2025 (Harvard)"},
+  {id:"st3c",cls:"strategy",title:"Case 1: Oura 2025 Presentation",date:"2026-09-02",time:"18:15",type:"presentation",weight:"",done:false,
+    notes:"Harvard case. Prepare 10-slide deck with your team."},
+
+  // Week 3 — Sep 9 (In-Person)
+  {id:"st4",cls:"strategy",title:"Week 3 Prep: Internal Analysis",date:"2026-09-09",time:"",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — 6:15–9:45 PM\n\nPrepare Before Class:\n• WSJ Practice application\n• Chapter 3\n\nIn Class:\n• Problem Identification: Internal Analysis\n• Chapter 3\n• Case 2: Milo's Tea (Harvard)"},
+  {id:"st4c",cls:"strategy",title:"Case 2: Milo's Tea Presentation",date:"2026-09-09",time:"18:15",type:"presentation",weight:"",done:false,
+    notes:"Harvard case. Prepare 10-slide deck with your team."},
+
+  // Week 4 — Sep 16 (In-Person)
+  {id:"st5",cls:"strategy",title:"Week 4 Prep: Cost Advantage",date:"2026-09-16",time:"",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — 6:15–9:45 PM\n\nPrepare Before Class:\n• WSJ Practice application\n• Chapter 4\n\nIn Class:\n• Business-Level Strategy: Cost Advantage\n• Chapter 4\n• Case 3: Karya (Berkeley)"},
+  {id:"st5c",cls:"strategy",title:"Case 3: Karya Presentation",date:"2026-09-16",time:"18:15",type:"presentation",weight:"",done:false,
+    notes:"Berkeley case. Prepare 10-slide deck with your team."},
+
+  // Week 5 — Sep 23 (In-Person)
+  {id:"st6",cls:"strategy",title:"Week 5 Prep: Sustainability",date:"2026-09-23",time:"",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — 6:15–9:45 PM\nGuest: Dr. Trey Sutton\n\nPrepare Before Class:\n• WSJ Practice application\n• Costanza, 1989, \"What is ecological economics?\" pages 1-5 (WSJ folder on Blackboard)\n• \"Decoupling-Debunked\" pages 3-5 (WSJ folder on Blackboard)\n\nIn Class:\n• Sustainability\n• Case 4: University of Richmond (Student team analyses)"},
+  {id:"st6c",cls:"strategy",title:"Case 4: University of Richmond Presentation",date:"2026-09-23",time:"18:15",type:"presentation",weight:"",done:false,
+    notes:"Student team analyses. Guest: Dr. Trey Sutton."},
+
+  // Week 6 — Sep 30 (In-Person)
+  {id:"st7",cls:"strategy",title:"Week 6 Prep: Differentiation",date:"2026-09-30",time:"",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — 6:15–9:45 PM\n\nPrepare Before Class:\n• WSJ Practice application\n• Chapter 5\n\nIn Class:\n• Business-Level Strategy: Differentiation\n• Chapter 5\n• Case 5: Chick-fil-A (McGraw Hill)"},
+  {id:"st7c",cls:"strategy",title:"Case 5: Chick-fil-A Presentation",date:"2026-09-30",time:"18:15",type:"presentation",weight:"",done:false,
+    notes:"McGraw Hill case. Prepare 10-slide deck with your team."},
+
+  // Week 7 — Oct 7 (In-Person)
+  {id:"st8",cls:"strategy",title:"Week 7: Library Research Session",date:"2026-10-07",time:"18:15",type:"deliverable",weight:"",done:false,
+    notes:"IN-PERSON — Full class in our classroom\n\nRSB Librarian Carrie Ludovico will lead a research session. Individual meetings with her available upon request.\n\nPrepare Before Class:\n• First draft of situation (external and internal) analysis of your individual project firm\n• Come prepared with specific questions about your research"},
+
+  // Weeks 8-11 — Oct 14 to Nov 4 (Async, no class)
+  {id:"st9",cls:"strategy",title:"Weeks 8–11: Individual Project Work Period",date:"2026-10-14",time:"",type:"deliverable",weight:"",done:false,
+    notes:"NO CLASS MEETINGS — Weeks of Oct 14, 21, 28, Nov 4\n\nUse this time to complete your individual project. Suggested weekly milestones:\n\nWeek 8 (Oct 14): Situation Analysis, Generating Alternatives\nWeek 9 (Oct 21): Applying Decision Criteria, Formulating Recommendations\nWeek 10 (Oct 28): Financial Analysis, Implementation Plan\nWeek 11 (Nov 4): Risks and Contingencies, Metrics, Proofread\n\n⚠️ Do NOT submit these each week — the complete analysis is due Dec 8."},
+
+  // Week 12 — Nov 11 (In-Person, Wednesday)
+  {id:"st10",cls:"strategy",title:"Week 12 Prep: Corporate Governance & Ethics",date:"2026-11-11",time:"",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — Wednesday Nov 11 (Dr. Bosse's class)\nGuest: Dr. Mary Lynn Lunn\n\nPrepare Before Class:\n• WSJ Practice application\n• Chapter 13\n\nNote: Ethics assigned reading for this session:\n• \"I Helped Run Lululemon: Companies Need to Stop Kidding Themselves about AI\" (Julie Averill, 2026)\n• Case: Tyme Group Goes Global\n\nIn Class:\n• Corporate Governance and Ethics\n• Chapter 13\n• Case 6: Tyme Group (Harvard)"},
+  {id:"st10c",cls:"strategy",title:"Case 6: Tyme Group Presentation",date:"2026-11-11",time:"18:15",type:"presentation",weight:"",done:false,
+    notes:"Harvard case. Guest: Dr. Mary Lynn Lunn."},
+
+  // Week 13 — Nov 18 (In-Person)
+  {id:"st11",cls:"strategy",title:"Week 13 Prep: Corporate Strategy",date:"2026-11-18",time:"",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — 6:15–9:45 PM\n\nPrepare Before Class:\n• WSJ Practice application\n• Chapter 6\n\nIn Class:\n• Corporate Strategy\n• Chapter 6\n• Case 7: Walt Disney Company (McGraw Hill)"},
+  {id:"st11c",cls:"strategy",title:"Case 7: Walt Disney Company Presentation",date:"2026-11-18",time:"18:15",type:"presentation",weight:"",done:false,
+    notes:"McGraw Hill case. Prepare 10-slide deck with your team."},
+
+  // Week 14 — Nov 25 Thanksgiving
+
+  // Week 15 — Dec 2 (In-Person)
+  {id:"st12",cls:"strategy",title:"Week 15 Prep: Strategic Career Management & Wrap-Up",date:"2026-12-02",time:"",type:"reading",weight:"",done:false,
+    notes:"IN-PERSON — 6:15–9:45 PM\n\nPrepare Before Class:\n• Watch video: \"Steve Jobs' 2005 Stanford Commencement Address\"\n• Case 8 Documentary film discussion questions — individuals (accessed via Blackboard)\n\nIn Class:\n• Strategic Management of Your Career\n• Exercise: in class\n• Case 8: Circuit City (in-class group discussion)\n• Course wrap-up exercise"},
+  {id:"st12a",cls:"strategy",title:"Team Member Peer Evaluations",date:"2026-12-05",time:"",type:"deliverable",weight:"",done:false,
+    notes:"Due Friday, December 5.\n\nSubmit peer evaluations for your team members."},
+
+  // Week 16 — Dec 8 (Async)
+  {id:"st13",cls:"strategy",title:"Individual Project DUE",date:"2026-12-08",time:"22:00",type:"deliverable",weight:"",done:false,
+    notes:"Final individual project due at 10:00 PM.\n\nComplete strategic case analysis including:\n• Situation analysis (external and internal)\n• Generating alternatives\n• Applying decision criteria\n• Formulating recommendations\n• Financial analysis\n• Implementation plan\n• Risks and contingencies\n• Metrics"},
+];
+
+const DEFAULT_SOCIAL=[
+  {id:"s1",title:"Commencement Rehearsal",date:"2026-08-19",time:"",endTime:"",location:"Robins School of Business",tags:["robins"],notes:"Required if walking in Commencement on Aug 21. If unable to attend, email Danice McWilliams."},
+  {id:"s2",title:"Graduate Programs Commencement Ceremony",date:"2026-08-21",time:"16:00",endTime:"20:30",location:"Ukrop Auditorium, Robins School of Business",tags:["robins"],notes:"4:00 PM — Arrive to dress and photos\n5:00 PM — Doors open for families\n5:30 PM — Ceremony begins\n6:30–8:30 PM — Reception in Molechert Commons"},
+  {id:"s3",title:"Opening Residency Presentations",date:"2026-08-22",time:"08:00",endTime:"13:40",location:"Ukrop Auditorium, Robins School of Business",tags:["robins"],notes:"Slide decks due by 8:00 AM — NO CHANGES after 8:00 AM.\nBe seated by 9:05 AM.\n\n8:00–9:00 AM · Breakfast\n9:05–9:10 AM · Welcome Remarks (Amy McCracken)\n9:10–12:05 PM · Team Presentations (5 teams)\n12:10–12:45 PM · Break / Judges Deliberate\n12:45–1:25 PM · Winners Announced & Feedback\n1:25–1:40 PM · Closing Remarks"},
+  {id:"s4",title:"Remarkable People Mixer",date:"2026-08-22",time:"13:40",endTime:"15:45",location:"Robins School of Business",tags:["robins","networking","social"],notes:"Immediately follows Opening Residency Presentations."},
+  {id:"s5",title:"Encorepreneur! — What's Next? 50 Years of Inspiring Curiosity",date:"2026-08-25",time:"08:00",endTime:"09:30",location:"Science Museum of Virginia, 2500 W. Broad Street",tags:["networking"],notes:"Learn how the Museum continues to evolve, change perspectives, and create new opportunities for learners of all ages."},
+  {id:"s6",title:"NAWBO August Co-work + Lunch + Learn",date:"2026-08-25",time:"11:00",endTime:"16:00",location:"Lavender Hill, 1705 Commonwealth Ave, Richmond, VA 23230",tags:["networking"],notes:"Capsule wardrobe workshop — simplify your wardrobe, reduce decision fatigue, save time and money."},
+  {id:"s7",title:"ACG End of Summer Happy Hour",date:"2026-08-26",time:"16:30",endTime:"18:30",location:"McCormack's Big Whisky Grill, 1420 North Parham Rd, Richmond, VA 23229",tags:["networking","social"],notes:"Kick off the 2026–2027 ACG Richmond program year. Casual networking, light hors d'oeuvres, and tasty spirits."},
+  {id:"s8",title:"ACG Young Professionals PickleBall Event",date:"2026-08-27",time:"16:00",endTime:"18:00",location:"Padel Plant, 1201 Haxall Point, Richmond, VA 23219",tags:["networking","social"],notes:"Join us on the pickleball courts for networking with fellow young professionals. Come dressed to be active or enjoy courtside drinks."},
+  {id:"s9",title:"Backyard Barbecue & Potluck",date:"2026-08-30",time:"13:00",endTime:"",location:"8 Bridgehampton Pl, Richmond, VA 23229",tags:["social"],notes:"Families and significant others welcome! SLC will provide hamburgers and hotdogs — please bring a dish, dessert, or drinks to share."},
+  {id:"s10",title:"ACG September Breakfast — AI with Dean Maye",date:"2026-09-18",time:"07:30",endTime:"09:00",location:"The Jefferson Hotel, Grand Ballroom, 101 West Franklin St, Richmond, VA 23220",tags:["networking"],notes:"Navigating AI-driven change with practical strategies for aligning AI initiatives with business objectives."},
+  {id:"s11",title:"Robins MBA Tailgate & Football Game",date:"2026-09-19",time:"",endTime:"",location:"University of Richmond",tags:["social","networking","robins"],notes:"Join fellow MBA students for a tailgate and football game. Details TBD."},
+  // Leadership Series
+  {id:"s12",title:"Leadership: The Power of Narrative",date:"2026-10-05",time:"17:00",endTime:"18:00",location:"",tags:["robins"],notes:"Choose Your Story, Change Your Life"},
+  {id:"s13",title:"Mentorship Introductory Reception",date:"2026-10-14",time:"",endTime:"",location:"",tags:["robins","networking"],notes:"Connect with mentors for personalized guidance and access to the Richmond business community."},
+  {id:"s14",title:"Leadership: Developing Confidence at Work",date:"2026-10-19",time:"17:00",endTime:"18:00",location:"",tags:["robins"],notes:""},
+  {id:"s15",title:"Business Etiquette Dinner",date:"2026-10-22",time:"",endTime:"",location:"",tags:["robins","networking"],notes:""},
+  {id:"s16",title:"Training The Street",date:"2026-10-31",time:"09:00",endTime:"16:00",location:"Jepson Hall Classroom 118, 221 Richmond Way",tags:["networking"],notes:"In-person, full-day session."},
+  {id:"s17",title:"Leadership: Demystifying Executive Presence",date:"2026-11-16",time:"17:00",endTime:"18:00",location:"",tags:["robins"],notes:""},
+  {id:"s18",title:"Leadership: Setting Effective Boundaries",date:"2026-12-07",time:"17:00",endTime:"18:00",location:"",tags:["robins"],notes:""},
+  {id:"s19",title:"Graduate Programs Holiday Celebration",date:"2026-12-17",time:"",endTime:"",location:"",tags:["robins","social"],notes:""},
+  {id:"s20",title:"Mentorship Midpoint Mingle",date:"2027-01-19",time:"",endTime:"",location:"",tags:["robins","networking","social"],notes:""},
+  {id:"s21",title:"Leadership: Setting Clear Expectations",date:"2027-02-01",time:"17:00",endTime:"18:00",location:"",tags:["robins"],notes:""},
+  {id:"s22",title:"Leadership: Building Stakeholder Trust",date:"2027-02-22",time:"17:00",endTime:"18:00",location:"",tags:["robins"],notes:""},
+  {id:"s23",title:"International Women's Day Celebration",date:"2027-03-04",time:"",endTime:"",location:"",tags:["robins","social","networking"],notes:""},
+  {id:"s24",title:"Leadership: Influencing Strategies",date:"2027-03-16",time:"17:00",endTime:"18:00",location:"",tags:["robins"],notes:""},
+  {id:"s25",title:"Leadership: Difficult Conversations & Negotiations",date:"2027-03-30",time:"17:00",endTime:"18:00",location:"",tags:["robins"],notes:""},
+  {id:"s26",title:"Mentorship Closing Dinner",date:"2027-04-08",time:"",endTime:"",location:"",tags:["robins","networking","social"],notes:""},
+  {id:"s27",title:"Leadership: SMART Goal Setting",date:"2027-04-13",time:"17:00",endTime:"18:00",location:"",tags:["robins"],notes:""},
+];
+
+// ==================== STATE ====================
+const MN=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const DN=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+let calTab="all",dueTab="all",activeMonth=1,calView="month",dueView="week",socView="week";
+let dueMonth=1,socMonth=1;
+let assignments=[],socialEvents=[];
+let editDueId=null,editSocId=null,expandedId=null,expandedSocId=null;
+let dueFilter="all",dueTypeFilter="all",socTagFilter=[];
+let calWeekStart,dueWeekStart,socWeekStart;
+
+// Type buckets for the Readings / Deliverables filter
+const READING_TYPES=["reading","discussion","other"];
+const DELIVERABLE_TYPES=["deliverable","paper","presentation","quiz"];
+function matchesDueType(a){
+  const t=a.type||"other";
+  if(dueTypeFilter==="readings")return READING_TYPES.includes(t);
+  if(dueTypeFilter==="deliverables")return DELIVERABLE_TYPES.includes(t);
+  return true; // "all"
+}
+
+function uid(){return Math.random().toString(36).slice(2,9);}
+function pd(s){const p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
+function ds(d){return d.toISOString().split("T")[0];}
+function getMonday(d){const dt=new Date(d);const day=dt.getDay();const diff=day===0?-6:1-day;dt.setDate(dt.getDate()+diff);return ds(dt);}
+function fds(s){const d=pd(s);return d.toLocaleDateString("en-US",{month:"short",day:"numeric"});}
+function fdl(s){const d=pd(s);return d.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"});}
+function ft(t){if(!t)return"";const[h,m]=t.split(":");const hr=+h;const ampm=hr>=12?"PM":"AM";const h12=hr%12||12;return m==="00"?`${h12} ${ampm}`:`${h12}:${m} ${ampm}`;}
+function esc(s){const d=document.createElement("div");d.textContent=s;return d.innerHTML;}
+function escNl(s){return esc(s).replace(/\n/g,"<br>");}
+function daysUntil(s){const d=pd(s);const now=new Date();now.setHours(0,0,0,0);return Math.ceil((d-now)/86400000);}
+function toast(m){const e=document.getElementById("toast");e.textContent=m;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),2200);}
+
+function visClasses(){
+  if(calTab==="all")return Object.keys(CLASSES);
+  return Object.keys(CLASSES).filter(k=>CLASSES[k].cohort===calTab);
+}
+function visDueClasses(){
+  if(dueTab==="all")return Object.keys(CLASSES);
+  return Object.keys(CLASSES).filter(k=>CLASSES[k].cohort===dueTab);
+}
+
+// ===== Shared data (data/data.json) + personal overlay (localStorage) =====
+// Shared data is the single source of truth, re-read fresh on every load so
+// updates reach everyone. Personal data (check-offs, hidden/edited items, and
+// anything you add yourself) lives only in this browser, keyed by ID, so a
+// data update never wipes it.
+const PKEY="mba-hub-personal-v1";
+const DATA_URL="data/data.json";
+let baseAsg=[],baseSoc=[],dataStamp="";
+let personal={done:{},hiddenAsg:[],editAsg:{},userAsg:[],hiddenSoc:[],editSoc:{},userSoc:[]};
+
+function loadPersonal(){try{const r=localStorage.getItem(PKEY);if(r)personal=Object.assign(personal,JSON.parse(r));}catch{}}
+function persist(){try{localStorage.setItem(PKEY,JSON.stringify(personal));}catch{}}
+
+function rebuild(){
+  assignments=baseAsg.filter(a=>!personal.hiddenAsg.includes(a.id))
+    .map(a=>({...a,...(personal.editAsg[a.id]||{}),base:true,done:!!personal.done[a.id]}))
+    .concat(personal.userAsg.map(a=>({...a,base:false,done:!!a.done})));
+  socialEvents=baseSoc.filter(e=>!personal.hiddenSoc.includes(e.id))
+    .map(e=>({...e,...(personal.editSoc[e.id]||{}),base:true}))
+    .concat(personal.userSoc.map(e=>({...e,base:false})));
+}
+
+async function loadData(){
+  loadPersonal();
+  try{
+    const res=await fetch(DATA_URL,{cache:"no-store"});
+    if(res.ok){const j=await res.json();baseAsg=j.assignments||[];baseSoc=j.social||j.socialEvents||[];dataStamp=j.updated||"";}
+  }catch{}
+  // Fallback if opened directly from disk (no web server / fetch blocked): use the embedded snapshot.
+  if(!baseAsg.length)baseAsg=DEFAULT_ASSIGNMENTS.map(a=>({...a}));
+  if(!baseSoc.length)baseSoc=DEFAULT_SOCIAL.map(e=>({...e}));
+  rebuild();
+  const now=new Date();
+  calWeekStart=getMonday(now);dueWeekStart=getMonday(now);socWeekStart=getMonday(now);
+  render();
+}
+
+function getEventsForDate(dateStr){
+  const vc=visClasses();const evts=[];
+  vc.forEach(cls=>{(SCHEDULE[cls]||[]).forEach(([d,type])=>{if(d===dateStr)evts.push({cls,type,label:CLASSES[cls].label,color:CLASSES[cls].color,light:CLASSES[cls].light,room:CLASSES[cls].room});});});
+
+  return evts;
+}
+
+function evtHtml(e){
+  const rm=e.room&&(e.type==="inperson"||e.type==="standard")?" · Rm "+e.room:"";
+  if(e.type==="final")return`<div class="cal-evt final-evt">🎓 ${esc(e.label)}</div>`;
+  if(e.type==="inperson")return`<div class="cal-evt inperson">${esc(e.label)}${rm}</div>`;
+  if(e.type==="async")return`<div class="cal-evt async">${esc(e.label)}</div>`;
+  return`<div class="cal-evt standard" style="background:${e.light};color:${e.color};border-left-color:${e.color}">${esc(e.label)}${rm}</div>`;
+}
+
+function syncCalMonth(){const mid=pd(calWeekStart);mid.setDate(mid.getDate()+3);const m=mid.getMonth();const idx=MONTHS.findIndex(x=>x.month===m&&x.year===mid.getFullYear());if(idx>=0)activeMonth=idx;}
+function prevCalWeek(){const d=pd(calWeekStart);d.setDate(d.getDate()-7);calWeekStart=ds(d);syncCalMonth();render();}
+function nextCalWeek(){const d=pd(calWeekStart);d.setDate(d.getDate()+7);calWeekStart=ds(d);syncCalMonth();render();}
+
+// ==================== RENDER ====================
+function render(){renderTabs();renderCal();renderDue();renderSoc();}
+
+function renderTabs(){
+  const tabs=[{key:"all",label:"All"},{key:"1st",label:"1st Year"},{key:"2nd",label:"2nd Year"}];
+  document.getElementById("tabs").innerHTML=tabs.map(t=>`<button class="tab${calTab===t.key?" active":""}" onclick="calTab='${t.key}';dueTab='${t.key}';render()">${t.label}</button>`).join("");
+}
+
+// ---- CALENDAR ----
+let monthPickerOpen=false;
+function toggleMonthPicker(){monthPickerOpen=!monthPickerOpen;render();}
+function selectMonth(i){activeMonth=i;monthPickerOpen=false;if(calView==='week')calWeekStart=getMonday(new Date(MONTHS[i].year,MONTHS[i].month,1));render();}
+function prevMonth(){if(activeMonth>0){activeMonth--;if(calView==='week')calWeekStart=getMonday(new Date(MONTHS[activeMonth].year,MONTHS[activeMonth].month,1));render();}}
+function nextMonth(){if(activeMonth<MONTHS.length-1){activeMonth++;if(calView==='week')calWeekStart=getMonday(new Date(MONTHS[activeMonth].year,MONTHS[activeMonth].month,1));render();}}
+
+function renderCal(){
+  const mo=MONTHS[activeMonth];
+  let h=`<div class="panel-header"><h2>📅 Class Schedule</h2><div style="display:flex;align-items:center;gap:6px;">`;
+  h+=`<div class="view-toggle"><button class="${calView==="month"?"active":""}" onclick="calView='month';render()">Month</button><button class="${calView==="week"?"active":""}" onclick="calView='week';calWeekStart=getMonday(new Date(MONTHS[activeMonth].year,MONTHS[activeMonth].month,1));render()">Week</button></div>`;
+  h+=`</div></div><div class="panel-body">`;
+  // Arrow nav + month picker
+  h+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">`;
+  h+=`<button class="cal-arrow" onclick="prevMonth()">◀</button>`;
+  h+=`<div class="month-picker-wrap"><button class="month-picker-btn" onclick="toggleMonthPicker()">${MN[mo.month]} ${mo.year} <span class="caret${monthPickerOpen?" open":""}">▼</span></button>`;
+  if(monthPickerOpen){
+    h+=`<div class="month-dropdown">`;
+    h+=MONTHS.map((m,i)=>`<button class="${activeMonth===i?"active":""}" onclick="event.stopPropagation();selectMonth(${i})">${m.label.replace("'","'")}</button>`).join("");
+    h+=`</div>`;
+  }
+  h+=`</div>`;
+  h+=`<button class="cal-arrow" onclick="nextMonth()">▶</button>`;
+  h+=`</div>`;
+
+  if(calView==="month")h+=renderCalMonth(mo);
+  else h+=renderCalWeek();
+  h+=`</div>`;
+  document.getElementById("calPanel").innerHTML=h;
+}
+
+// Close month picker when clicking outside
+document.addEventListener("click",e=>{if(monthPickerOpen&&!e.target.closest(".month-picker-wrap")){monthPickerOpen=false;render();}});
+
+function renderCalMonth(mo){
+  const firstDay=new Date(mo.year,mo.month,1);const startDow=firstDay.getDay();const dim=new Date(mo.year,mo.month+1,0).getDate();const today=ds(new Date());
+  let h=`<div class="cal-grid">`;
+  DN.forEach(d=>h+=`<div class="cal-dayhead">${d}</div>`);
+  const prevDays=new Date(mo.year,mo.month,0).getDate();
+  for(let i=startDow-1;i>=0;i--){const day=prevDays-i;const pm=mo.month===0?11:mo.month-1;const py=mo.month===0?mo.year-1:mo.year;const s=`${py}-${String(pm+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;const e=getEventsForDate(s);h+=`<div class="cal-cell other-month"><div class="cal-num">${day}</div>${e.map(x=>evtHtml(x)).join("")}</div>`;}
+  for(let d=1;d<=dim;d++){const s=`${mo.year}-${String(mo.month+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;const isT=s===today;const e=getEventsForDate(s);h+=`<div class="cal-cell${isT?" today":""}"><div class="cal-num">${d}</div>${e.map(x=>evtHtml(x)).join("")}</div>`;}
+  const total=startDow+dim;const rem=(7-total%7)%7;
+  for(let d=1;d<=rem;d++){const nm=mo.month===11?0:mo.month+1;const ny=mo.month===11?mo.year+1:mo.year;const s=`${ny}-${String(nm+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;const e=getEventsForDate(s);h+=`<div class="cal-cell other-month"><div class="cal-num">${d}</div>${e.map(x=>evtHtml(x)).join("")}</div>`;}
+  h+=`</div>`;return h;
+}
+
+function renderCalWeek(){
+  const mon=pd(calWeekStart);const today=ds(new Date());
+  let h=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><div class="week-nav"><button onclick="prevCalWeek()">◀</button><span class="wn-label">${fds(calWeekStart)} – ${fds(ds(new Date(mon.getFullYear(),mon.getMonth(),mon.getDate()+6)))}</span><button onclick="nextCalWeek()">▶</button></div><button class="dc-filter" onclick="calWeekStart=getMonday(new Date());syncCalMonth();render()">Today</button></div>`;
+  h+=`<div class="cal-week-grid">`;
+  for(let i=0;i<7;i++){const d=new Date(mon.getFullYear(),mon.getMonth(),mon.getDate()+i);const s=ds(d);const isT=s===today;const e=getEventsForDate(s);h+=`<div class="cal-week-cell${isT?" today":""}"><div class="cal-week-dayhead">${DN[d.getDay()]}</div><div class="cal-week-date">${d.getDate()}</div>${e.map(x=>evtHtml(x)).join("")}</div>`;}
+  h+=`</div>`;return h;
+}
+
+// ---- DUE DATES ----
+function renderDue(){
+  const vc=visDueClasses();
+  const mo=MONTHS[dueMonth];
+  let h=`<div class="panel-header"><h2>📋 Due Dates${dataStamp?` <span style="font-size:9px;font-weight:600;color:var(--text3)">· updated ${dataStamp}</span>`:""}</h2><div style="display:flex;gap:4px;align-items:center;"><div class="view-toggle"><button class="${dueView==="week"?"active":""}" onclick="dueView='week';render()">Week</button><button class="${dueView==="month"?"active":""}" onclick="dueView='month';render()">Month</button></div></div></div><div class="panel-body">`;
+  // filters
+  h+=`<div class="dc-filters"><button class="dc-filter fclass${dueFilter==="all"?" active":""}" onclick="dueFilter='all';render()">All</button>`;
+  vc.forEach(cls=>{const c=CLASSES[cls];h+=`<button class="dc-filter fclass${dueFilter===cls?" active":""}" onclick="dueFilter='${cls}';render()">${c.label}</button>`;});
+  h+=`</div>`;
+  // type filter: All / Readings / Deliverables
+  h+=`<div class="dc-filters"><button class="dc-filter ftype${dueTypeFilter==="all"?" active":""}" onclick="dueTypeFilter='all';render()">All Types</button><button class="dc-filter ftype${dueTypeFilter==="readings"?" active":""}" onclick="dueTypeFilter='readings';render()">📖 Reading/Other</button><button class="dc-filter ftype${dueTypeFilter==="deliverables"?" active":""}" onclick="dueTypeFilter='deliverables';render()">✅ Deliverables</button></div>`;
+
+  const filtered=assignments.filter(a=>vc.includes(a.cls)).filter(a=>dueFilter==="all"||a.cls===dueFilter).filter(matchesDueType);
+
+  if(dueView==="week"){
+    const mon=pd(dueWeekStart);const sun=new Date(mon.getFullYear(),mon.getMonth(),mon.getDate()+6);
+    h+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><div class="week-nav"><button onclick="dueWeekStart=ds(new Date(pd(dueWeekStart).getFullYear(),pd(dueWeekStart).getMonth(),pd(dueWeekStart).getDate()-7));render()">◀</button><span class="wn-label">${fds(dueWeekStart)} – ${fds(ds(sun))}</span><button onclick="dueWeekStart=ds(new Date(pd(dueWeekStart).getFullYear(),pd(dueWeekStart).getMonth(),pd(dueWeekStart).getDate()+7));render()">▶</button></div><button class="dc-filter" onclick="dueWeekStart=getMonday(new Date());render()">This Week</button></div>`;
+    const weekItems=filtered.filter(a=>{return a.date>=dueWeekStart&&a.date<=ds(sun);});
+    const undone=weekItems.filter(a=>!a.done).sort((a,b)=>a.date.localeCompare(b.date));
+    const done=weekItems.filter(a=>a.done);
+    [...undone,...done].forEach(a=>h+=dueItemHtml(a));
+    if(!weekItems.length)h+=`<div class="empty">Nothing due this week</div>`;
+  } else {
+    // Month calendar nav
+    h+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">`;
+    h+=`<button class="cal-arrow" onclick="if(dueMonth>0){dueMonth--;render()}">◀</button>`;
+    h+=`<span style="font-weight:700;font-size:13px;">${MN[mo.month]} ${mo.year}</span>`;
+    h+=`<button class="cal-arrow" onclick="if(dueMonth<MONTHS.length-1){dueMonth++;render()}">▶</button>`;
+    h+=`</div>`;
+    // Build calendar grid
+    h+=renderMiniMonthCal(mo,filtered,"due");
+  }
+  h+=`<button class="add-btn" onclick="openDueModal('add')">+ Add Assignment</button></div>`;
+  document.getElementById("duePanel").innerHTML=h;
+}
+
+function getDueEventsForDate(dateStr,filtered){
+  return filtered.filter(a=>a.date===dateStr);
+}
+
+function renderMiniMonthCal(mo,items,panel){
+  const firstDay=new Date(mo.year,mo.month,1);const startDow=firstDay.getDay();const dim=new Date(mo.year,mo.month+1,0).getDate();const today=ds(new Date());
+  let h=`<div class="mini-cal-grid">`;
+  DN.forEach(d=>h+=`<div class="cal-dayhead">${d}</div>`);
+  const prevDays=new Date(mo.year,mo.month,0).getDate();
+  for(let i=startDow-1;i>=0;i--){const day=prevDays-i;
+    h+=`<div class="mini-cal-cell other-month"><div class="mini-cal-num">${day}</div></div>`;}
+  for(let d=1;d<=dim;d++){
+    const s=`${mo.year}-${String(mo.month+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+    const isT=s===today;
+    const dayItems=panel==="due"?getDueEventsForDate(s,items):getSocEventsForDate(s,items);
+    h+=`<div class="mini-cal-cell${isT?" today":""}"><div class="mini-cal-num">${d}</div><div class="mini-cal-dots">`;
+    const maxShow=2;
+    dayItems.slice(0,maxShow).forEach((item,idx)=>{
+      if(panel==="due"){
+        const c=CLASSES[item.cls]||{color:"#888",light:"#eee"};
+        h+=`<div class="mini-cal-dot" style="background:${c.light};color:${c.color};cursor:pointer" onclick="event.stopPropagation();openCardPopover('${panel}','${item.id}',this)">${esc(item.title.substring(0,18))}</div>`;
+      } else {
+        const firstTag=(item.tags||[])[0];const tg=firstTag?TAGS[firstTag]:null;
+        const bg=tg?tg.light:"var(--bg)";const col=tg?tg.color:"var(--text2)";
+        h+=`<div class="mini-cal-dot" style="background:${bg};color:${col};cursor:pointer" onclick="event.stopPropagation();openCardPopover('${panel}','${item.id}',this)">${esc(item.title.substring(0,18))}</div>`;
+      }
+    });
+    if(dayItems.length>maxShow){
+      const ids=dayItems.map(x=>x.id).join(",");
+      h+=`<div class="mini-cal-more" style="cursor:pointer" onclick="event.stopPropagation();openDayPopover('${panel}','${s}',this)">+${dayItems.length-maxShow} more</div>`;
+    }
+    h+=`</div></div>`;
+  }
+  const total=startDow+dim;const rem=(7-total%7)%7;
+  for(let d=1;d<=rem;d++){h+=`<div class="mini-cal-cell other-month"><div class="mini-cal-num">${d}</div></div>`;}
+  h+=`</div>`;
+  return h;
+}
+
+// ---- POPOVER ----
+function closePopover(){document.getElementById("popoverContainer").innerHTML="";}
+
+function openCardPopover(panel,itemId,el){
+  let item;
+  if(panel==="due") item=assignments.find(a=>a.id===itemId);
+  else item=socialEvents.find(e=>e.id===itemId);
+  if(!item)return;
+
+  const rect=el.getBoundingClientRect();
+  const html=panel==="due"?buildDuePopover(item):buildSocPopover(item);
+  positionPopover(html,rect);
+}
+
+function openDayPopover(panel,dateStr,el){
+  const rect=el.getBoundingClientRect();
+  let items;
+  if(panel==="due"){
+    const vc=visDueClasses();
+    items=assignments.filter(a=>a.date===dateStr&&vc.includes(a.cls)&&(dueFilter==="all"||a.cls===dueFilter));
+  } else {
+    items=socialEvents.filter(e=>e.date===dateStr);
+    if(socTagFilter.length)items=items.filter(e=>(e.tags||[]).some(t=>socTagFilter.includes(t)));
+  }
+  let h=`<button class="popover-close" onclick="closePopover()">✕</button>`;
+  h+=`<div class="popover-title">${fdl(dateStr)}</div>`;
+  h+=`<div style="display:flex;flex-direction:column;gap:6px;margin-top:6px;">`;
+  items.forEach(item=>{
+    if(panel==="due"){
+      const c=CLASSES[item.cls]||{color:"#888",light:"#eee",label:"?"};
+      const aType=item.type||"other";const typeLabel=aType.charAt(0).toUpperCase()+aType.slice(1);
+      h+=`<div style="padding:6px;border-radius:6px;border:1px solid var(--border);cursor:pointer" onclick="event.stopPropagation();closePopover();openCardPopover('due','${item.id}',this)">`;
+      h+=`<div style="font-size:12px;font-weight:600;">${esc(item.title)}</div>`;
+      h+=`<div style="font-size:10px;color:var(--text2);margin-top:2px;display:flex;gap:4px;flex-wrap:wrap;"><span class="wdi-class-tag" style="background:${c.light};color:${c.color}">${c.label}</span><span class="wdi-type ${aType}">${typeLabel}</span></div></div>`;
+    } else {
+      const tagHtml=(item.tags||[]).map(t=>{const tg=TAGS[t];return tg?`<span class="soc-tag" style="background:${tg.light};color:${tg.color}">${tg.label}</span>`:""}).join("");
+      h+=`<div style="padding:6px;border-radius:6px;border:1px solid var(--border);cursor:pointer" onclick="event.stopPropagation();closePopover();openCardPopover('soc','${item.id}',this)">`;
+      h+=`<div style="font-size:12px;font-weight:600;">🕷️ ${esc(item.title)}</div>`;
+      h+=`<div style="font-size:10px;color:var(--text2);margin-top:2px;display:flex;gap:4px;flex-wrap:wrap;">${tagHtml}</div></div>`;
+    }
+  });
+  h+=`</div>`;
+  positionPopover(h,rect);
+}
+
+function buildDuePopover(a){
+  const c=CLASSES[a.cls]||{label:"?",color:"#888",light:"#eee"};
+  const aType=a.type||"other";const typeLabel=aType.charAt(0).toUpperCase()+aType.slice(1);
+  const timeStr=a.time?ft(a.time):"";
+  const du=daysUntil(a.date);
+  const urgency=a.done?"":du<0?`<span style="color:var(--danger);font-weight:700">${Math.abs(du)}d overdue</span>`:du===0?`<span style="color:var(--danger);font-weight:700">Due today</span>`:`<span>${du}d left</span>`;
+  let h=`<button class="popover-close" onclick="closePopover()">✕</button>`;
+  h+=`<div class="popover-title">${esc(a.title)}</div>`;
+  h+=`<div class="popover-meta"><span class="wdi-class-tag" style="background:${c.light};color:${c.color}">${c.label}</span><span class="wdi-type ${aType}">${typeLabel}</span>${urgency}</div>`;
+  h+=`<div class="popover-section"><div class="popover-label">Due</div><div class="popover-text">${fdl(a.date)}${timeStr?" · "+timeStr:""}</div></div>`;
+  if(a.weight)h+=`<div class="popover-section"><div class="popover-label">Weight</div><div class="popover-text">${esc(a.weight)}</div></div>`;
+  if(a.notes)h+=`<div class="popover-section"><div class="popover-label">Notes</div><div class="popover-text">${escNl(a.notes)}</div></div>`;
+  return h;
+}
+
+function buildSocPopover(ev){
+  const ts=ev.time?ft(ev.time):"";const te=ev.endTime?ft(ev.endTime):"";const timeStr=ts?(te?`${ts} – ${te}`:ts):"";
+  const tagHtml=(ev.tags||[]).map(t=>{const tg=TAGS[t];return tg?`<span class="soc-tag" style="background:${tg.light};color:${tg.color}">${tg.label}</span>`:""}).join(" ");
+  let h=`<button class="popover-close" onclick="closePopover()">✕</button>`;
+  h+=`<div class="popover-title">🕷️ ${esc(ev.title)}</div>`;
+  h+=`<div class="popover-meta">${tagHtml}</div>`;
+  h+=`<div class="popover-section"><div class="popover-label">When</div><div class="popover-text">${fdl(ev.date)}${timeStr?" · "+timeStr:""}</div></div>`;
+  if(ev.location)h+=`<div class="popover-section"><div class="popover-label">Where</div><div class="popover-text">${esc(ev.location)}</div></div>`;
+  if(ev.notes)h+=`<div class="popover-section"><div class="popover-label">Details</div><div class="popover-text">${escNl(ev.notes)}</div></div>`;
+  return h;
+}
+
+function positionPopover(html,rect){
+  const ctr=document.getElementById("popoverContainer");
+  // Position near the clicked element
+  let top=rect.bottom+6;let left=rect.left;
+  // Keep within viewport
+  const vw=window.innerWidth;const vh=window.innerHeight;
+  if(left+310>vw)left=vw-316;
+  if(left<8)left=8;
+  if(top+300>vh)top=rect.top-306;
+  if(top<8)top=8;
+  ctr.innerHTML=`<div class="popover-backdrop" onclick="closePopover()"></div><div class="popover" style="top:${top}px;left:${left}px;">${html}</div>`;
+}
+
+function dueItemHtml(a){
+  const c=CLASSES[a.cls]||{label:"?",color:"#888",light:"#eee"};
+  const isE=expandedId===a.id;const du=daysUntil(a.date);
+  const urgency=a.done?"":du<0?`<span style="color:var(--danger);font-weight:700">${Math.abs(du)}d overdue</span>`:du===0?`<span style="color:var(--danger);font-weight:700">Due today</span>`:`<span>${du}d left</span>`;
+  const aType=a.type||"other";
+  const typeLabel=aType.charAt(0).toUpperCase()+aType.slice(1);
+  const timeStr=a.time?ft(a.time):"";
+  return`<div class="wdi"><div class="wdi-row" onclick="toggleExpand('${a.id}')"><div class="wdi-check${a.done?" checked":""}" onclick="event.stopPropagation();toggleDue('${a.id}')">${a.done?"✓":""}</div><div class="wdi-body"><div class="wdi-title${a.done?" struck":""}">${esc(a.title)}</div><div class="wdi-meta"><span class="wdi-class-tag" style="background:${c.light};color:${c.color}">${c.label}</span><span class="wdi-type ${aType}">${typeLabel}</span>${urgency}<span>${fds(a.date)}${timeStr?" · "+timeStr:""}</span></div></div><span class="wdi-chevron${isE?" open":""}">▶</span></div><div class="wdi-detail${isE?" open":""}"><div class="wdi-detail-row"><span class="wdi-detail-label">Due</span><span>${fdl(a.date)}${timeStr?" · "+timeStr:""}</span></div><div class="wdi-detail-row"><span class="wdi-detail-label">Type</span><span class="wdi-type ${aType}">${typeLabel}</span></div>${a.weight?`<div class="wdi-detail-row"><span class="wdi-detail-label">Weight</span><span>${esc(a.weight)}</span></div>`:""}${a.notes?`<div class="wdi-detail-row" style="flex-direction:column;gap:2px"><span class="wdi-detail-label">Notes</span><span style="font-size:10px;line-height:1.5">${escNl(a.notes)}</span></div>`:""}<button class="wdi-edit" onclick="event.stopPropagation();openDueModal('edit',${JSON.stringify(a).replace(/"/g,'&quot;')})">✎ Edit</button></div></div>`;
+}
+
+function toggleExpand(id){expandedId=expandedId===id?null:id;render();}
+function toggleDue(id){
+  const a=assignments.find(x=>x.id===id);if(!a)return;
+  if(a.base){if(personal.done[id])delete personal.done[id];else personal.done[id]=true;}
+  else personal.userAsg=personal.userAsg.map(x=>x.id===id?{...x,done:!x.done}:x);
+  persist();rebuild();render();
+}
+function openDueModal(mode,a){
+  document.getElementById("dueModalTitle").textContent=mode==="add"?"Add Assignment":"Edit Assignment";
+  const sel=document.getElementById("dmClass");sel.innerHTML=Object.entries(CLASSES).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join("");
+  if(mode==="edit"&&a){editDueId=a.id;document.getElementById("dmTitle").value=a.title;sel.value=a.cls;document.getElementById("dmDate").value=a.date;document.getElementById("dmType").value=a.type||"other";document.getElementById("dmWeight").value=a.weight||"";document.getElementById("dmNotes").value=a.notes||"";document.getElementById("dmDel").style.display="block";}
+  else{editDueId=null;document.getElementById("dmTitle").value="";document.getElementById("dmDate").value="";document.getElementById("dmType").value="deliverable";document.getElementById("dmWeight").value="";document.getElementById("dmNotes").value="";document.getElementById("dmDel").style.display="none";}
+  document.getElementById("dueModal").classList.add("open");
+}
+function closeDueModal(){document.getElementById("dueModal").classList.remove("open");}
+function saveDue(){
+  const title=document.getElementById("dmTitle").value.trim();const cls=document.getElementById("dmClass").value;const date=document.getElementById("dmDate").value;const type=document.getElementById("dmType").value;const weight=document.getElementById("dmWeight").value.trim();const notes=document.getElementById("dmNotes").value.trim();
+  if(!title||!date){toast("Title and date required");return;}
+  if(editDueId){
+    const a=assignments.find(x=>x.id===editDueId);
+    if(a&&a.base)personal.editAsg[editDueId]={...(personal.editAsg[editDueId]||{}),title,cls,date,type,weight,notes};
+    else personal.userAsg=personal.userAsg.map(x=>x.id===editDueId?{...x,title,cls,date,type,weight,notes}:x);
+  } else {
+    personal.userAsg.push({id:uid(),title,cls,date,type,weight,notes,done:false});
+  }
+  persist();rebuild();closeDueModal();render();
+}
+function deleteDue(){
+  const a=assignments.find(x=>x.id===editDueId);
+  if(a&&a.base){if(!personal.hiddenAsg.includes(editDueId))personal.hiddenAsg.push(editDueId);delete personal.editAsg[editDueId];delete personal.done[editDueId];toast("Hidden on this device");}
+  else personal.userAsg=personal.userAsg.filter(x=>x.id!==editDueId);
+  persist();rebuild();closeDueModal();render();
+}
+
+// ---- SOCIAL ----
+function getSocEventsForDate(dateStr,evts){return evts.filter(e=>e.date===dateStr);}
+
+function renderSoc(){
+  const mo=MONTHS[socMonth];
+  let h=`<div class="panel-header"><h2 style="color:var(--teal)">🕷️ Social & Networking</h2><div class="view-toggle"><button class="${socView==="week"?"active":""}" onclick="socView='week';render()">Week</button><button class="${socView==="month"?"active":""}" onclick="socView='month';render()">Month</button></div></div><div class="panel-body">`;
+  // tag legend / filter
+  h+=`<div class="soc-legend">`;
+  Object.entries(TAGS).forEach(([k,t])=>{const active=socTagFilter.includes(k);const dimmed=socTagFilter.length>0&&!active;h+=`<div class="soc-legend-item${active?" active":""}${dimmed?" dimmed":""}" style="color:${t.color}" onclick="toggleTagFilter('${k}')"><div class="soc-legend-dot" style="background:${t.color}"></div>${t.label}</div>`;});
+  if(socTagFilter.length)h+=`<div class="soc-legend-item" style="color:var(--text3);font-size:9px" onclick="socTagFilter=[];render()">✕ Clear</div>`;
+  h+=`</div>`;
+
+  let evts=socialEvents.slice();
+  if(socTagFilter.length)evts=evts.filter(e=>(e.tags||[]).some(t=>socTagFilter.includes(t)));
+  evts.sort((a,b)=>a.date.localeCompare(b.date)||((a.time||"").localeCompare(b.time||"")));
+
+  if(socView==="week"){
+    const mon=pd(socWeekStart);const sun=new Date(mon.getFullYear(),mon.getMonth(),mon.getDate()+6);
+    h+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><div class="week-nav"><button onclick="socWeekStart=ds(new Date(pd(socWeekStart).getFullYear(),pd(socWeekStart).getMonth(),pd(socWeekStart).getDate()-7));render()">◀</button><span class="wn-label">${fds(socWeekStart)} – ${fds(ds(sun))}</span><button onclick="socWeekStart=ds(new Date(pd(socWeekStart).getFullYear(),pd(socWeekStart).getMonth(),pd(socWeekStart).getDate()+7));render()">▶</button></div><button class="dc-filter" onclick="socWeekStart=getMonday(new Date());render()">This Week</button></div>`;
+    const weekEvts=evts.filter(e=>e.date>=socWeekStart&&e.date<=ds(sun));
+    weekEvts.forEach(e=>h+=socItemHtml(e,true));
+    if(!weekEvts.length)h+=`<div class="empty">No events this week</div>`;
+  } else {
+    // Month calendar nav
+    h+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">`;
+    h+=`<button class="cal-arrow" onclick="if(socMonth>0){socMonth--;render()}">◀</button>`;
+    h+=`<span style="font-weight:700;font-size:13px;">${MN[mo.month]} ${mo.year}</span>`;
+    h+=`<button class="cal-arrow" onclick="if(socMonth<MONTHS.length-1){socMonth++;render()}">▶</button>`;
+    h+=`</div>`;
+    h+=renderMiniMonthCal(mo,evts,"soc");
+  }
+  h+=`<button class="add-btn" onclick="openSocModal('add')">+ Add Event</button></div>`;
+  document.getElementById("socPanel").innerHTML=h;
+}
+
+function socItemHtml(ev,showDate){
+  const isE=expandedSocId===ev.id;const ts=ev.time?ft(ev.time):"";const te=ev.endTime?ft(ev.endTime):"";const timeStr=ts?(te?`${ts} – ${te}`:ts):"";
+  const tagHtml=(ev.tags||[]).map(t=>{const tg=TAGS[t];return tg?`<span class="soc-tag" style="background:${tg.light};color:${tg.color}">${tg.label}</span>`:""}).join("");
+  const dateTag=showDate?`<span class="wdi-class-tag" style="background:var(--navy-light);color:var(--navy)">${fds(ev.date)}</span>`:"";
+  const evJson=JSON.stringify(ev).replace(/"/g,'&quot;');
+  return`<div class="soc-evt"><div class="soc-evt-row" onclick="toggleSocExpand('${ev.id}')"><div class="soc-icon">🕷️</div><div class="soc-body"><div class="soc-title">${esc(ev.title)}</div><div class="soc-meta">${dateTag}${timeStr?`<span>🕐 ${timeStr}</span>`:""}${ev.location?`<span>📍 ${esc(ev.location).split(",")[0]}</span>`:""}${tagHtml}</div></div><span class="wdi-chevron${isE?" open":""}">▶</span></div><div class="soc-detail${isE?" open":""}"><div class="wdi-detail-row"><span class="wdi-detail-label">When</span><span>${fdl(ev.date)}${timeStr?" · "+timeStr:""}</span></div>${ev.location?`<div class="wdi-detail-row"><span class="wdi-detail-label">Where</span><span>${esc(ev.location)}</span></div>`:""}${ev.notes?`<div class="wdi-detail-row" style="flex-direction:column;gap:2px"><span class="wdi-detail-label">Details</span><span style="font-size:10px;line-height:1.6">${escNl(ev.notes)}</span></div>`:""}<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap"><button class="wdi-edit" style="width:auto" onclick="event.stopPropagation();openSocModal('edit',${evJson})">✎ Edit</button><button class="wdi-edit" style="width:auto" onclick="event.stopPropagation();addToGoogleCal(${evJson})">📅 Google Cal</button><button class="wdi-edit" style="width:auto" onclick="event.stopPropagation();downloadICS(${evJson})">🗓️ iCal</button></div></div></div>`;
+}
+
+function toggleSocExpand(id){expandedSocId=expandedSocId===id?null:id;render();}
+function toggleTagFilter(t){if(socTagFilter.includes(t))socTagFilter=socTagFilter.filter(x=>x!==t);else socTagFilter.push(t);render();}
+
+// Google Cal / iCal export
+function toCalDate(date,time){const d=date.replace(/-/g,"");if(!time)return d;return d+"T"+time.replace(/:/g,"")+"00";}
+function addToGoogleCal(ev){
+  const start=toCalDate(ev.date,ev.time);let end;
+  if(ev.endTime)end=toCalDate(ev.date,ev.endTime);
+  else if(ev.time){const[h,m]=ev.time.split(":").map(Number);end=toCalDate(ev.date,String(h+1).padStart(2,"0")+":"+String(m).padStart(2,"0"));}
+  const isAllDay=!ev.time;let dates;
+  if(isAllDay){const next=new Date(pd(ev.date));next.setDate(next.getDate()+1);dates=`${start}/${ds(next).replace(/-/g,"")}`;}else{dates=`${start}/${end}`;}
+  window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(ev.title)}&dates=${dates}&location=${encodeURIComponent(ev.location||"")}&details=${encodeURIComponent((ev.notes||"").replace(/\n/g,"\n"))}`,"_blank");
+}
+function downloadICS(ev){
+  const nl="\r\n";let ics="BEGIN:VCALENDAR"+nl+"VERSION:2.0"+nl+"PRODID:-//MBA Hub//EN"+nl+"BEGIN:VEVENT"+nl;
+  if(!ev.time){const d=ev.date.replace(/-/g,"");const next=new Date(pd(ev.date));next.setDate(next.getDate()+1);ics+="DTSTART;VALUE=DATE:"+d+nl+"DTEND;VALUE=DATE:"+ds(next).replace(/-/g,"")+nl;}
+  else{ics+="DTSTART:"+toCalDate(ev.date,ev.time)+nl;let end;if(ev.endTime)end=toCalDate(ev.date,ev.endTime);else{const[h,m]=ev.time.split(":").map(Number);end=toCalDate(ev.date,String(h+1).padStart(2,"0")+":"+String(m).padStart(2,"0"));}ics+="DTEND:"+end+nl;}
+  ics+="SUMMARY:"+ev.title.replace(/,/g,"\\,")+nl;
+  if(ev.location)ics+="LOCATION:"+ev.location.replace(/,/g,"\\,")+nl;
+  if(ev.notes)ics+="DESCRIPTION:"+ev.notes.replace(/\n/g,"\\n").replace(/,/g,"\\,")+nl;
+  ics+="END:VEVENT"+nl+"END:VCALENDAR";
+  const blob=new Blob([ics],{type:"text/calendar;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=ev.title.replace(/[^a-zA-Z0-9]/g,"_").substring(0,40)+".ics";a.click();
+}
+
+// Social modal
+let smSelTags=[];
+function openSocModal(mode,ev){
+  document.getElementById("socModalTitle").textContent=mode==="add"?"Add Event":"Edit Event";
+  if(mode==="edit"&&ev){editSocId=ev.id;document.getElementById("smTitle").value=ev.title;document.getElementById("smDate").value=ev.date;document.getElementById("smTime").value=ev.time||"";document.getElementById("smEndTime").value=ev.endTime||"";document.getElementById("smLoc").value=ev.location||"";document.getElementById("smNotes").value=ev.notes||"";smSelTags=[...(ev.tags||[])];document.getElementById("smDel").style.display="block";}
+  else{editSocId=null;document.getElementById("smTitle").value="";document.getElementById("smDate").value="";document.getElementById("smTime").value="";document.getElementById("smEndTime").value="";document.getElementById("smLoc").value="";document.getElementById("smNotes").value="";smSelTags=[];document.getElementById("smDel").style.display="none";}
+  renderSmTags();document.getElementById("socModal").classList.add("open");
+}
+function closeSocModal(){document.getElementById("socModal").classList.remove("open");}
+function renderSmTags(){document.getElementById("smTags").innerHTML=Object.entries(TAGS).map(([k,t])=>`<button class="${smSelTags.includes(k)?"sel":""}" style="${smSelTags.includes(k)?`background:${t.light};color:${t.color};border-color:${t.color}`:""}" onclick="toggleSmTag('${k}')">${t.label}</button>`).join("");}
+function toggleSmTag(t){if(smSelTags.includes(t))smSelTags=smSelTags.filter(x=>x!==t);else smSelTags.push(t);renderSmTags();}
+function saveSocial(){
+  const title=document.getElementById("smTitle").value.trim();const date=document.getElementById("smDate").value;const time=document.getElementById("smTime").value;const endTime=document.getElementById("smEndTime").value;const location=document.getElementById("smLoc").value.trim();const notes=document.getElementById("smNotes").value.trim();
+  if(!title||!date){toast("Title and date required");return;}
+  if(editSocId){
+    const e=socialEvents.find(x=>x.id===editSocId);
+    if(e&&e.base)personal.editSoc[editSocId]={...(personal.editSoc[editSocId]||{}),title,date,time,endTime,location,tags:[...smSelTags],notes};
+    else personal.userSoc=personal.userSoc.map(x=>x.id===editSocId?{...x,title,date,time,endTime,location,tags:[...smSelTags],notes}:x);
+  } else {
+    personal.userSoc.push({id:uid(),title,date,time,endTime,location,tags:[...smSelTags],notes});
+  }
+  persist();rebuild();closeSocModal();render();
+}
+function deleteSocial(){
+  const e=socialEvents.find(x=>x.id===editSocId);
+  if(e&&e.base){if(!personal.hiddenSoc.includes(editSocId))personal.hiddenSoc.push(editSocId);delete personal.editSoc[editSocId];toast("Hidden on this device");}
+  else personal.userSoc=personal.userSoc.filter(x=>x.id!==editSocId);
+  persist();rebuild();closeSocModal();render();
+}
+
+// Click outside modal to close
+document.getElementById("dueModal").addEventListener("click",e=>{if(e.target===document.getElementById("dueModal"))closeDueModal();});
+document.getElementById("socModal").addEventListener("click",e=>{if(e.target===document.getElementById("socModal"))closeSocModal();});
+
+loadData();
+</script>
+</body>
+</html>
