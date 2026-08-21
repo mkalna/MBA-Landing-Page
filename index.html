@@ -252,6 +252,26 @@
 <div class="toast" id="toast"></div>
 <div id="popoverContainer"></div>
 
+<!-- Firebase SDK (compat for simple CDN usage) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script>
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyDoFNu6HPjlHKSqs54B9PjHh7soLs-kxRE",
+  authDomain: "mba-landing-page.firebaseapp.com",
+  databaseURL: "https://mba-landing-page-default-rtdb.firebaseio.com",
+  projectId: "mba-landing-page",
+  storageBucket: "mba-landing-page.firebasestorage.app",
+  messagingSenderId: "384272298403",
+  appId: "1:384272298403:web:e5adb2a6f60defae052a16",
+  measurementId: "G-X4SMEQ4Y2D"
+};
+firebase.initializeApp(firebaseConfig);
+const fbDb = firebase.database();
+const fbSocRef = fbDb.ref("socialEvents");
+</script>
+
 <script>
 // ==================== DATA ====================
 const CLASSES={
@@ -552,15 +572,15 @@ function visDueClasses(){
   return Object.keys(CLASSES).filter(k=>CLASSES[k].cohort===dueTab);
 }
 
-// ===== Shared data (data/data.json) + personal overlay (localStorage) =====
-// Shared data is the single source of truth, re-read fresh on every load so
-// updates reach everyone. Personal data (check-offs, hidden/edited items, and
-// anything you add yourself) lives only in this browser, keyed by ID, so a
-// data update never wipes it.
-const PKEY="mba-hub-personal-v1";
+// ===== Shared data (data/data.json) + Firebase (user events) + localStorage (personal) =====
+// Base data comes from data/data.json (assignments + seed social events).
+// User-added social events sync to Firebase so everyone sees them.
+// Personal data (check-offs, edits, hidden items) stays in localStorage.
+const PKEY="mba-hub-personal-v2";
 const DATA_URL="data/data.json";
 let baseAsg=[],baseSoc=[],dataStamp="";
-let personal={done:{},hiddenAsg:[],editAsg:{},userAsg:[],hiddenSoc:[],editSoc:{},userSoc:[]};
+let firebaseSoc=[];  // events from Firebase (shared across all users)
+let personal={done:{},hiddenAsg:[],editAsg:{},userAsg:[],hiddenSoc:[],editSoc:{}};
 
 function loadPersonal(){try{const r=localStorage.getItem(PKEY);if(r)personal=Object.assign(personal,JSON.parse(r));}catch{}}
 function persist(){try{localStorage.setItem(PKEY,JSON.stringify(personal));}catch{}}
@@ -571,22 +591,32 @@ function rebuild(){
     .concat(personal.userAsg.map(a=>({...a,base:false,done:!!a.done})));
   socialEvents=baseSoc.filter(e=>!personal.hiddenSoc.includes(e.id))
     .map(e=>({...e,...(personal.editSoc[e.id]||{}),base:true}))
-    .concat(personal.userSoc.map(e=>({...e,base:false})));
+    .concat(firebaseSoc.map(e=>({...e,base:false,shared:true})));
 }
 
 async function loadData(){
   loadPersonal();
+  // Migrate old userSoc from localStorage → Firebase (one-time)
+  try{
+    const old=localStorage.getItem("mba-hub-personal-v1");
+    if(old){const p=JSON.parse(old);if(p.userSoc&&p.userSoc.length){p.userSoc.forEach(e=>{fbSocRef.child(e.id).set(e);});delete p.userSoc;localStorage.setItem("mba-hub-personal-v1",JSON.stringify(p));}}
+  }catch{}
   try{
     const res=await fetch(DATA_URL,{cache:"no-store"});
     if(res.ok){const j=await res.json();baseAsg=j.assignments||[];baseSoc=j.social||j.socialEvents||[];dataStamp=j.updated||"";}
   }catch{}
-  // Fallback if opened directly from disk (no web server / fetch blocked): use the embedded snapshot.
   if(!baseAsg.length)baseAsg=DEFAULT_ASSIGNMENTS.map(a=>({...a}));
   if(!baseSoc.length)baseSoc=DEFAULT_SOCIAL.map(e=>({...e}));
   rebuild();
   const now=new Date();
   calWeekStart=getMonday(now);dueWeekStart=getMonday(now);socWeekStart=getMonday(now);
   render();
+  // Listen to Firebase for shared social events — live updates
+  fbSocRef.on("value",snap=>{
+    const val=snap.val();
+    firebaseSoc=val?Object.values(val):[];
+    rebuild();render();
+  });
 }
 
 function getEventsForDate(dateStr){
@@ -957,18 +987,20 @@ function saveSocial(){
   if(!title||!date){toast("Title and date required");return;}
   if(editSocId){
     const e=socialEvents.find(x=>x.id===editSocId);
-    if(e&&e.base)personal.editSoc[editSocId]={...(personal.editSoc[editSocId]||{}),title,date,time,endTime,location,tags:[...smSelTags],notes};
-    else personal.userSoc=personal.userSoc.map(x=>x.id===editSocId?{...x,title,date,time,endTime,location,tags:[...smSelTags],notes}:x);
+    if(e&&e.base){personal.editSoc[editSocId]={...(personal.editSoc[editSocId]||{}),title,date,time,endTime,location,tags:[...smSelTags],notes};persist();}
+    else{const updated={id:editSocId,title,date,time,endTime,location,tags:[...smSelTags],notes};fbSocRef.child(editSocId).set(updated);}
   } else {
-    personal.userSoc.push({id:uid(),title,date,time,endTime,location,tags:[...smSelTags],notes});
+    const newId=uid();
+    const evt={id:newId,title,date,time,endTime,location,tags:[...smSelTags],notes};
+    fbSocRef.child(newId).set(evt);
   }
-  persist();rebuild();closeSocModal();render();
+  rebuild();closeSocModal();render();
 }
 function deleteSocial(){
   const e=socialEvents.find(x=>x.id===editSocId);
-  if(e&&e.base){if(!personal.hiddenSoc.includes(editSocId))personal.hiddenSoc.push(editSocId);delete personal.editSoc[editSocId];toast("Hidden on this device");}
-  else personal.userSoc=personal.userSoc.filter(x=>x.id!==editSocId);
-  persist();rebuild();closeSocModal();render();
+  if(e&&e.base){if(!personal.hiddenSoc.includes(editSocId))personal.hiddenSoc.push(editSocId);delete personal.editSoc[editSocId];persist();toast("Hidden on this device");}
+  else{fbSocRef.child(editSocId).remove();}
+  rebuild();closeSocModal();render();
 }
 
 // Click outside modal to close
