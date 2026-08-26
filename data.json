@@ -1,7 +1,359 @@
 {
-  "updated": "2026-08-20",
+  "updated": "2026-08-26",
   "source": "manual",
   "assignments": [
+    {
+      "id": "ec1",
+      "cls": "economics",
+      "title": "PS1: Decision Making / State of Economy",
+      "date": "2026-08-31",
+      "time": "",
+      "type": "deliverable",
+      "weight": "Problem Set",
+      "done": false,
+      "notes": "Problem Set 1 \u2014 due Aug 31\n\nAssigned Week 1 (Aug 24)\nMicro Topic: Decision Making\nMacro Topic: State of Economy"
+    },
+    {
+      "id": "ec2",
+      "cls": "economics",
+      "title": "PS2: Supply & Demand / Money",
+      "date": "2026-09-07",
+      "time": "",
+      "type": "deliverable",
+      "weight": "Problem Set",
+      "done": false,
+      "notes": "Problem Set 2 \u2014 due Sep 7\n\nAssigned Week 2 (Aug 31)\nMicro Topic: Supply and Demand\nMacro Topic: Money"
+    },
+    {
+      "id": "ec3",
+      "cls": "economics",
+      "title": "PS3: Elasticity / Interest Rates",
+      "date": "2026-09-14",
+      "time": "",
+      "type": "deliverable",
+      "weight": "Problem Set",
+      "done": false,
+      "notes": "Problem Set 3 \u2014 due Sep 14\n\nAssigned Week 3 (Sep 7)\nMicro Topic: Elasticity\nMacro Topic: Interest Rates"
+    },
+    {
+      "id": "ec4",
+      "cls": "economics",
+      "title": "PS4: Short-Run Costs / Interest Rates",
+      "date": "2026-09-21",
+      "time": "",
+      "type": "deliverable",
+      "weight": "Problem Set",
+      "done": false,
+      "notes": "Problem Set 4 \u2014 due Sep 21\n\nAssigned Week 4 (Sep 14)\nMicro Topic: Short-Run Costs\nMacro Topic: Interest Rates"
+    },
+    {
+      "id": "ec5",
+      "cls": "economics",
+      "title": "PS5: Short-Run Costs / Real Interest Rates",
+      "date": "2026-09-28",
+      "time": "",
+      "type": "deliverable",
+      "weight": "Problem Set",
+      "done": false,
+      "notes": "Problem Set 5 \u2014 due Sep 28\n\nAssigned Week 5 (Sep 21)\nMicro Topic: Short-Run Costs\nMacro Topic: Real Interest Rates"
+    },
+    {
+      "id": "ec6",
+      "cls": "economics",
+      "title": "Midterm Study: Long-Run Costs / Real Interest Rates",
+      "date": "2026-10-05",
+      "time": "",
+      "type": "reading",
+      "weight": "Midterm Prep",
+      "done": false,
+      "notes": "Midterm study materials \u2014 due Oct 5\n\nAssigned Week 6 (Sep 28)\nMicro Topic: Long-Run Costs\nMacro Topic: Real Interest Rates\n\nPrepare for Midterm exam on Oct 5."
+    },
+    {
+      "id": "ec7",
+      "cls": "economics",
+      "title": "MIDTERM EXAM",
+      "date": "2026-10-05",
+      "time": "18:15",
+      "type": "quiz",
+      "weight": "Midterm",
+      "done": false,
+      "notes": "Monday, October 5 \u2014 Midterm Exam\n\nWeek 7 class topics:\nMicro: Midterm\nMacro: Stock Market"
+    },
+    {
+      "id": "ec8",
+      "cls": "economics",
+      "title": "PS6: Perfect Competition / Central Bank Structure",
+      "date": "2026-10-26",
+      "time": "",
+      "type": "deliverable",
+      "weight": "Problem Set",
+      "done": false,
+      "notes": "Problem Set 6 \u2014 due Oct 26\n\nAssigned Week 8 (Oct 19)\nMicro Topic: Perfect Competition\nMacro Topic: Central Bank Structure"
+    },
+    {
+      "id": "ec9",
+      "cls": "economics",
+      "title": "PS7: Perfect Competition / Monetary Control",
+      "date": "2026-11-02",
+      "time": "",
+      "type": "deliverable",
+      "weight": "Problem Set",
+      "done": false,
+      "notes": "Problem Set 7 \u2014 due Nov 2\n\nAssigned Week 9 (Oct 26)\nMicro Topic: Perfect Competition\nMacro Topic: Monetary Control"
+    },
+    {
+      "id": "ec10",
+      "cls": "economics",
+      "title": "PS8: Monopoly / Monetary Control",
+      "date": "2026-11-09",
+      "time": "",
+      "type": "deliverable",
+      "weight": "Problem Set",
+      "done": false,
+      "notes": "Problem Set 8 \u2014 due Nov 9\n\nAssigned Week 10 (Nov 2)\nMicro Topic: Monopoly\nMacro Topic: Monetary Control"
+    },
+    {
+      "id": "ec11",
+      "cls": "economics",
+      "title": "PS9: Pricing with Market Power / Goals of Monetary Policy",
+      "date": "2026-11-16",
+      "time": "",
+      "type": "deliverable",
+      "weight": "Problem Set",
+      "done": false,
+      "notes": "Problem Set 9 \u2014 due Nov 16\n\nAssigned Week 11 (Nov 9)\nMicro Topic: Pricing with Market Power\nMacro Topic: Goals of Monetary Policy"
+    },
+    {
+      "id": "ec12",
+      "cls": "economics",
+      "title": "PS10: Economics of Information / Goals of Monetary Policy",
+      "date": "2026-11-30",
+      "time": "",
+      "type": "deliverable",
+      "weight": "Problem Set",
+      "done": false,
+      "notes": "Problem Set 10 \u2014 due Nov 30\n\nAssigned Week 12 (Nov 16)\nMicro Topic: Economics of Information\nMacro Topic: Goals of Monetary Policy"
+    },
+    {
+      "id": "ec13",
+      "cls": "economics",
+      "title": "PS11: Game Theory / Policy Rules",
+      "date": "2026-12-07",
+      "time": "",
+      "type": "deliverable",
+      "weight": "Problem Set",
+      "done": false,
+      "notes": "Problem Set 11 \u2014 due Dec 7\n\nAssigned Week 13 (Nov 30)\nMicro Topic: Game Theory\nMacro Topic: Policy Rules"
+    },
+    {
+      "id": "ec14",
+      "cls": "economics",
+      "title": "Final Study: Game Theory / Policy Rules",
+      "date": "2026-12-14",
+      "time": "",
+      "type": "reading",
+      "weight": "Final Prep",
+      "done": false,
+      "notes": "Final study materials \u2014 due Dec 14\n\nAssigned Week 14 (Dec 7)\nMicro Topic: Game Theory\nMacro Topic: Policy Rules\n\nPrepare for Final Exam on Dec 14."
+    },
+    {
+      "id": "ec15",
+      "cls": "economics",
+      "title": "FINAL EXAM",
+      "date": "2026-12-14",
+      "time": "18:15",
+      "type": "quiz",
+      "weight": "Final Exam",
+      "done": false,
+      "notes": "Monday, December 14 \u2014 Final Exam\n\nCovers all course material."
+    },
+    {
+      "id": "ac1",
+      "cls": "accounting",
+      "title": "Module 1: End of Module Assignments",
+      "date": "2026-08-25",
+      "time": "",
+      "type": "deliverable",
+      "weight": "",
+      "done": false,
+      "notes": "Due: 8/25 \u2014 Topics: Intro & Module 1\n\nEnd of Module Assignments: 2, 3, 6, 7, 8, 12, 14, 16, 19, 20, 23, 26, 33\u201335, 39"
+    },
+    {
+      "id": "ac2",
+      "cls": "accounting",
+      "title": "Module 2: End of Module Assignments",
+      "date": "2026-09-01",
+      "time": "",
+      "type": "deliverable",
+      "weight": "",
+      "done": false,
+      "notes": "Due: 9/1 \u2014 Topics: Module 2\n\nEnd of Module Assignments: 2\u20134, 6, 10\u201317, 19, 23, 27, 33"
+    },
+    {
+      "id": "ac3",
+      "cls": "accounting",
+      "title": "Module 3: End of Module Assignments",
+      "date": "2026-09-08",
+      "time": "",
+      "type": "deliverable",
+      "weight": "",
+      "done": false,
+      "notes": "Due: 9/8 \u2014 Topics: Module 3\n\nEnd of Module Assignments: 1\u20135, 8, 9, 12, 17, 30"
+    },
+    {
+      "id": "ac4",
+      "cls": "accounting",
+      "title": "Module 4: Financial Statement Analysis",
+      "date": "2026-09-15",
+      "time": "",
+      "type": "deliverable",
+      "weight": "",
+      "done": false,
+      "notes": "Due: 9/15 \u2014 Topics: Module 4 \u2014 Use Financial Statement Analysis separate handout(s)\n\nEnd of Module Assignments: E2A, E3A, E4A, P3 (at the end of the chapter handout)"
+    },
+    {
+      "id": "ac5",
+      "cls": "accounting",
+      "title": "Module 5: End of Module Assignments",
+      "date": "2026-09-22",
+      "time": "",
+      "type": "deliverable",
+      "weight": "",
+      "done": false,
+      "notes": "Due: 9/22 \u2014 Topics: Module 5\n\nEnd of Module Assignments: 1\u20137, 9\u201313, 15, 17\u201319, 21, 23, 24, 37"
+    },
+    {
+      "id": "ac5x",
+      "cls": "accounting",
+      "title": "Exam I (Modules 1\u20134)",
+      "date": "2026-09-22",
+      "time": "",
+      "type": "quiz",
+      "weight": "Exam I",
+      "done": false,
+      "notes": "Hand in Exam I \u2014 Covers Modules 1\u20134.\n\nDue on 9/22 along with Module 5 assignments."
+    },
+    {
+      "id": "ac6",
+      "cls": "accounting",
+      "title": "Module 6: End of Module Assignments",
+      "date": "2026-09-29",
+      "time": "",
+      "type": "deliverable",
+      "weight": "",
+      "done": false,
+      "notes": "Due: 9/29 \u2014 Topics: Module 6\n\nEnd of Module Assignments: 1, 2, 4, 5, 7\u20139, 11, 15, 17, 18, 20, 23, 26, 27, 38"
+    },
+    {
+      "id": "ac7",
+      "cls": "accounting",
+      "title": "Module 7: End of Module Assignments",
+      "date": "2026-10-06",
+      "time": "",
+      "type": "deliverable",
+      "weight": "",
+      "done": false,
+      "notes": "Due: 10/6 \u2014 Topics: Module 7\n\nEnd of Module Assignments: 1\u20137, 9, 11, 16, 20, 21, 23, 29, 30"
+    },
+    {
+      "id": "ac8",
+      "cls": "accounting",
+      "title": "Module 8: End of Module Assignments",
+      "date": "2026-10-20",
+      "time": "",
+      "type": "deliverable",
+      "weight": "",
+      "done": false,
+      "notes": "Due: 10/20 \u2014 Topics: Module 8 (after fall break)\n\nEnd of Module Assignments: 1\u201310, 13, 14, 16\u201319, 21, 23, 26, 27, 38"
+    },
+    {
+      "id": "ac9",
+      "cls": "accounting",
+      "title": "Module 9: End of Module Assignments",
+      "date": "2026-10-27",
+      "time": "",
+      "type": "deliverable",
+      "weight": "",
+      "done": false,
+      "notes": "Due: 10/27 \u2014 Topics: Module 9\n\nEnd of Module Assignments: 1\u20136, 13, 17, 22, 23, 27, 28"
+    },
+    {
+      "id": "ac10",
+      "cls": "accounting",
+      "title": "Module 11: End of Module Assignments",
+      "date": "2026-11-03",
+      "time": "",
+      "type": "deliverable",
+      "weight": "",
+      "done": false,
+      "notes": "Due: 11/3 \u2014 Topics: Module 11\n\nEnd of Module Assignments: 1\u20135, 8\u201311, 14, 22, 32"
+    },
+    {
+      "id": "ac11",
+      "cls": "accounting",
+      "title": "Module 14: End of Module Assignments",
+      "date": "2026-11-10",
+      "time": "",
+      "type": "deliverable",
+      "weight": "",
+      "done": false,
+      "notes": "Due: 11/10 \u2014 Topics: Module 14\n\nEnd of Module Assignments: 1\u20133, 9, 17, 20, 26, 34"
+    },
+    {
+      "id": "ac11x",
+      "cls": "accounting",
+      "title": "Exam II (Modules 5\u20139 & 11)",
+      "date": "2026-11-10",
+      "time": "",
+      "type": "quiz",
+      "weight": "Exam II",
+      "done": false,
+      "notes": "Hand in Exam II \u2014 Covers Modules 5\u20139 & 11.\n\nDue on 11/10 along with Module 14 assignments."
+    },
+    {
+      "id": "ac12",
+      "cls": "accounting",
+      "title": "Modules 15 & 16: End of Module Assignments",
+      "date": "2026-11-17",
+      "time": "",
+      "type": "deliverable",
+      "weight": "",
+      "done": false,
+      "notes": "Due: 11/17 \u2014 Topics: Modules 15 & 16\n\nModule 15 Assignments: 1\u201313, 20, 22\nModule 16 Assignments: 1, 2, 5, 6, 7, 18, 19, 31"
+    },
+    {
+      "id": "ac13",
+      "cls": "accounting",
+      "title": "Module 17: End of Module Assignments",
+      "date": "2026-12-01",
+      "time": "",
+      "type": "deliverable",
+      "weight": "",
+      "done": false,
+      "notes": "Due: 12/1 \u2014 Topics: Module 17\n\nEnd of Module Assignments: 1, 5\u20139, 11, 14, 24, 27, 28, 30, 33, 36"
+    },
+    {
+      "id": "ac14",
+      "cls": "accounting",
+      "title": "Module 18: End of Module Assignments",
+      "date": "2026-12-08",
+      "time": "",
+      "type": "deliverable",
+      "weight": "",
+      "done": false,
+      "notes": "Due: 12/8 \u2014 Topics: Module 18 (skim this chapter)\n\nEnd of Module Assignments: 1\u20136, 9, 12, 13, 16, 31, 33\n\nNote: Prof. Geiger will hand out solutions for #31 & #33."
+    },
+    {
+      "id": "ac15",
+      "cls": "accounting",
+      "title": "FINAL EXAM + Corporate Annual Report Project",
+      "date": "2026-12-15",
+      "time": "18:15",
+      "type": "quiz",
+      "weight": "Final Exam + Project",
+      "done": false,
+      "notes": "Tuesday, December 15 \u2014 Final Exam\n\n\u2022 Hand in Corporate Annual Report Project\n\u2022 Hand in Exam III take-home portion\n\u2022 Complete Exam III in-class portion"
+    },
     {
       "id": "as1",
       "cls": "analytics",
@@ -22,7 +374,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "ASYNC WEEK — Complete by Sep 7\n\nDescription:\nVideo on Pivot Tables and Pivot Charts for Microsoft Excel, with data files to work alongside.\n\nStudent Activity:\nDownload data files and work alongside the video to reinforce or build new skills with pivot tables and pivot charts. Files are not required to be submitted, but complete by Sep 7. Prof. Whitaker is happy to meet with any student who has questions."
+      "notes": "ASYNC WEEK \u2014 Complete by Sep 7\n\nDescription:\nVideo on Pivot Tables and Pivot Charts for Microsoft Excel, with data files to work alongside.\n\nStudent Activity:\nDownload data files and work alongside the video to reinforce or build new skills with pivot tables and pivot charts. Files are not required to be submitted, but complete by Sep 7. Prof. Whitaker is happy to meet with any student who has questions."
     },
     {
       "id": "as3",
@@ -33,7 +385,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "ASYNC WEEK — Complete by Sep 14\n\nDescription:\nVideo on Solver and Scenarios for Microsoft Excel, with data files to work alongside.\n\nStudent Activity:\nDownload data files and work alongside the video to reinforce or build new skills with Solver and Scenarios. Files are not required to be submitted, but complete by Sep 14. Prof. Whitaker is happy to meet with any student who has questions."
+      "notes": "ASYNC WEEK \u2014 Complete by Sep 14\n\nDescription:\nVideo on Solver and Scenarios for Microsoft Excel, with data files to work alongside.\n\nStudent Activity:\nDownload data files and work alongside the video to reinforce or build new skills with Solver and Scenarios. Files are not required to be submitted, but complete by Sep 14. Prof. Whitaker is happy to meet with any student who has questions."
     },
     {
       "id": "as4",
@@ -44,7 +396,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 207, 6:15–9:45 PM\n\nSegments:\nA. Tables I\nB. Tables II\nC. Tables III\n\nReading Reference:\nMicrosoft Access 2013: Step by Step (Lambert & Cox) — O'Reilly Books Online\n• Section 1: Explore Microsoft Access 2013 — Understanding database concepts, Exploring tables\n• Section 2: Create databases and simple tables — Creating databases/tables, Manipulating columns/rows, Refining structure, Defining relationships\n• Section 4: Display data — Sorting & filtering\n• Part 3 Section 1: Importing from Excel and text files\n\nVideo Reference:\nLinkedIn Learning: Access 2016 Essential Training (Adam Wilbert)\n• Section 1: Getting started — Key database concepts, Creating database file\n• Section 2: Creating tables — Structure, Data types, Primary/foreign keys, Importing\n• Section 3: Setting field properties — Relationships, Design view"
+      "notes": "IN-PERSON \u2014 Room 207, 6:15\u20139:45 PM\n\nSegments:\nA. Tables I\nB. Tables II\nC. Tables III\n\nReading Reference:\nMicrosoft Access 2013: Step by Step (Lambert & Cox) \u2014 O'Reilly Books Online\n\u2022 Section 1: Explore Microsoft Access 2013 \u2014 Understanding database concepts, Exploring tables\n\u2022 Section 2: Create databases and simple tables \u2014 Creating databases/tables, Manipulating columns/rows, Refining structure, Defining relationships\n\u2022 Section 4: Display data \u2014 Sorting & filtering\n\u2022 Part 3 Section 1: Importing from Excel and text files\n\nVideo Reference:\nLinkedIn Learning: Access 2016 Essential Training (Adam Wilbert)\n\u2022 Section 1: Getting started \u2014 Key database concepts, Creating database file\n\u2022 Section 2: Creating tables \u2014 Structure, Data types, Primary/foreign keys, Importing\n\u2022 Section 3: Setting field properties \u2014 Relationships, Design view"
     },
     {
       "id": "as5",
@@ -55,7 +407,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 207, 6:15–9:45 PM\n\nSegments:\nA. Queries I\nB. Queries II\nC. Calculations\n\nReading Reference:\nMicrosoft Access 2013: Step by Step (Lambert & Cox)\n• Section 1: Exploring queries\n• Section 7: Create queries — Creating queries manually, Summarizing data, Calculating\n\nVideo Reference:\nLinkedIn Learning: Access 2016 Essential Training (Adam Wilbert)\n• Section 5: Using queries — Design view, Criteria, AND/OR, Math comparisons, Expressions\n• Section 6: Specialty queries — Crosstab queries"
+      "notes": "IN-PERSON \u2014 Room 207, 6:15\u20139:45 PM\n\nSegments:\nA. Queries I\nB. Queries II\nC. Calculations\n\nReading Reference:\nMicrosoft Access 2013: Step by Step (Lambert & Cox)\n\u2022 Section 1: Exploring queries\n\u2022 Section 7: Create queries \u2014 Creating queries manually, Summarizing data, Calculating\n\nVideo Reference:\nLinkedIn Learning: Access 2016 Essential Training (Adam Wilbert)\n\u2022 Section 5: Using queries \u2014 Design view, Criteria, AND/OR, Math comparisons, Expressions\n\u2022 Section 6: Specialty queries \u2014 Crosstab queries"
     },
     {
       "id": "as6",
@@ -66,7 +418,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 207, 6:15–9:45 PM\n\nSegments:\nA. Load data\nB. Format data\nC. Analyze data I\n\nReading Reference:\nLearning SAS by Example, 2nd Ed. (Ron Cody)\n• Ch 3: Reading raw data from external files\n• Ch 5: Creating labels and formats\n• Ch 11: Working with numeric functions\n• Ch 12: Working with character functions\n• Ch 16: Summarizing data (PROC MEANS, BY/CLASS statements)\n\nVideo Reference:\nSAS Programming 1: Essentials\n• Lesson 1: Essentials — Programming with SAS Studio, Syntax\n• Lesson 2: Accessing data — Importing files\n• Lesson 3: Exploring and validating data — Formatting values"
+      "notes": "IN-PERSON \u2014 Room 207, 6:15\u20139:45 PM\n\nSegments:\nA. Load data\nB. Format data\nC. Analyze data I\n\nReading Reference:\nLearning SAS by Example, 2nd Ed. (Ron Cody)\n\u2022 Ch 3: Reading raw data from external files\n\u2022 Ch 5: Creating labels and formats\n\u2022 Ch 11: Working with numeric functions\n\u2022 Ch 12: Working with character functions\n\u2022 Ch 16: Summarizing data (PROC MEANS, BY/CLASS statements)\n\nVideo Reference:\nSAS Programming 1: Essentials\n\u2022 Lesson 1: Essentials \u2014 Programming with SAS Studio, Syntax\n\u2022 Lesson 2: Accessing data \u2014 Importing files\n\u2022 Lesson 3: Exploring and validating data \u2014 Formatting values"
     },
     {
       "id": "as7",
@@ -77,7 +429,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 207, 6:15–9:45 PM\n\nSegments:\nA. Analyze data II\nB. Analyze data III\nC. Report data\n\nReading Reference:\nLearning SAS by Example, 2nd Ed. (Ron Cody)\n• Ch 15: Creating customized reports (PROC REPORT)\n• Ch 17: Counting frequencies (PROC FREQ, two-way/three-way tables)\n• Ch 18: Creating tabular reports (PROC TABULATE)\n• Ch 20: Creating charts and graphs (bar charts, scatter plots, histograms, box plots)\n\nVideo Reference:\nSAS Programming 1: Essentials — Lesson 5: Analyzing and reporting\nSAS Report Writing — Lesson 2: TABULATE, Lesson 4: REPORT"
+      "notes": "IN-PERSON \u2014 Room 207, 6:15\u20139:45 PM\n\nSegments:\nA. Analyze data II\nB. Analyze data III\nC. Report data\n\nReading Reference:\nLearning SAS by Example, 2nd Ed. (Ron Cody)\n\u2022 Ch 15: Creating customized reports (PROC REPORT)\n\u2022 Ch 17: Counting frequencies (PROC FREQ, two-way/three-way tables)\n\u2022 Ch 18: Creating tabular reports (PROC TABULATE)\n\u2022 Ch 20: Creating charts and graphs (bar charts, scatter plots, histograms, box plots)\n\nVideo Reference:\nSAS Programming 1: Essentials \u2014 Lesson 5: Analyzing and reporting\nSAS Report Writing \u2014 Lesson 2: TABULATE, Lesson 4: REPORT"
     },
     {
       "id": "as8",
@@ -88,7 +440,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 207, 6:15–9:45 PM\n\nSegments:\nA. Get data\nB. Transform data\nC. Data model\n\nReading Reference:\nLearn Power BI, 2nd Ed. (Greg Deckler)\n• Ch 1: Key concepts — Domain, Data, Model, Analysis\n• Ch 2: Planning projects — Stakeholders, Goals, Data sources, Data model design\n• Ch 4: Connecting to and transforming data — Getting data, Transforming data\n• Ch 5: Creating data models — Model view, Relationships\n\nVideo Reference:\nLinkedIn Learning: Power BI Essential Training (Gini von Courter)\n• Section 1: Power BI concepts\n• Section 2: Get data — Sources, Data hub, Creating datasets\n• Section 8: Model data — Get data, Reduce data, Transform, Relate tables"
+      "notes": "IN-PERSON \u2014 Room 207, 6:15\u20139:45 PM\n\nSegments:\nA. Get data\nB. Transform data\nC. Data model\n\nReading Reference:\nLearn Power BI, 2nd Ed. (Greg Deckler)\n\u2022 Ch 1: Key concepts \u2014 Domain, Data, Model, Analysis\n\u2022 Ch 2: Planning projects \u2014 Stakeholders, Goals, Data sources, Data model design\n\u2022 Ch 4: Connecting to and transforming data \u2014 Getting data, Transforming data\n\u2022 Ch 5: Creating data models \u2014 Model view, Relationships\n\nVideo Reference:\nLinkedIn Learning: Power BI Essential Training (Gini von Courter)\n\u2022 Section 1: Power BI concepts\n\u2022 Section 2: Get data \u2014 Sources, Data hub, Creating datasets\n\u2022 Section 8: Model data \u2014 Get data, Reduce data, Transform, Relate tables"
     },
     {
       "id": "as9",
@@ -99,7 +451,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 207, 6:15–9:45 PM\n\nSegments:\nA. Calculations\nB. Visualization\nC. Reports\n\nReading Reference:\nLearn Power BI, 2nd Ed. (Greg Deckler)\n• Ch 1: Visualization concepts\n• Ch 2: Planning reports and dashboards\n• Ch 3: Calculated tables, Calculated columns, Creating/formatting visualizations, Adding analytics\n• Ch 5: Calculated columns\n• Ch 7: Creating page templates\n• Ch 10: Creating and working with dashboards\n\nVideo Reference:\nLinkedIn Learning: Power BI Essential Training (Gini von Courter)\n• Section 3: Create report with visualizations\n• Section 4: Modify and print a report\n• Section 5: Create a dashboard"
+      "notes": "IN-PERSON \u2014 Room 207, 6:15\u20139:45 PM\n\nSegments:\nA. Calculations\nB. Visualization\nC. Reports\n\nReading Reference:\nLearn Power BI, 2nd Ed. (Greg Deckler)\n\u2022 Ch 1: Visualization concepts\n\u2022 Ch 2: Planning reports and dashboards\n\u2022 Ch 3: Calculated tables, Calculated columns, Creating/formatting visualizations, Adding analytics\n\u2022 Ch 5: Calculated columns\n\u2022 Ch 7: Creating page templates\n\u2022 Ch 10: Creating and working with dashboards\n\nVideo Reference:\nLinkedIn Learning: Power BI Essential Training (Gini von Courter)\n\u2022 Section 3: Create report with visualizations\n\u2022 Section 4: Modify and print a report\n\u2022 Section 5: Create a dashboard"
     },
     {
       "id": "as10",
@@ -110,7 +462,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 207, 6:15–9:45 PM\n\nSegments:\nA. Analysis\nB. Text\nC. Presentations\n\nReading Reference:\nMicrosoft Copilot Pro Step by Step (Lisa Crosbie)\n• Part 2: Copilot on the web\n• Part 3: Copilot in Excel, Outlook, Word, PowerPoint\n\nVideo Reference:\nLinkedIn Learning: Microsoft Copilot Essentials (Microsoft Press)\n• Section 2: Communication — Email triage, Meeting prep\n• Section 3: Writing & creativity — Draft documents, Briefs to presentations, Visual generation\n• Section 4: Analysis — Text-to-analysis in Excel, Exploratory analysis, Research & synthesis"
+      "notes": "IN-PERSON \u2014 Room 207, 6:15\u20139:45 PM\n\nSegments:\nA. Analysis\nB. Text\nC. Presentations\n\nReading Reference:\nMicrosoft Copilot Pro Step by Step (Lisa Crosbie)\n\u2022 Part 2: Copilot on the web\n\u2022 Part 3: Copilot in Excel, Outlook, Word, PowerPoint\n\nVideo Reference:\nLinkedIn Learning: Microsoft Copilot Essentials (Microsoft Press)\n\u2022 Section 2: Communication \u2014 Email triage, Meeting prep\n\u2022 Section 3: Writing & creativity \u2014 Draft documents, Briefs to presentations, Visual generation\n\u2022 Section 4: Analysis \u2014 Text-to-analysis in Excel, Exploratory analysis, Research & synthesis"
     },
     {
       "id": "as11",
@@ -121,7 +473,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 207, 6:15–9:45 PM\n\nReading Reference:\nMicrosoft Copilot Studio Step by Step (Lisa Crosbie)\n• Ch 1: Understanding Copilot Studio and agents\n• Ch 2: Designing effective agents\n• Ch 4: Building agents in Copilot Studio\n• Ch 5: Building autonomous agents\n\nVideo Reference:\nLinkedIn Learning: How to Create AI Agents Like a Pro in Copilot Studio (Microsoft Press)\n• Section 1: Agent Confusion Crisis — Autonomous agents, No-code & low-code agents\n• Section 2: FAQ Responder — Natural language creation, Configure instructions, Publishing agent"
+      "notes": "IN-PERSON \u2014 Room 207, 6:15\u20139:45 PM\n\nReading Reference:\nMicrosoft Copilot Studio Step by Step (Lisa Crosbie)\n\u2022 Ch 1: Understanding Copilot Studio and agents\n\u2022 Ch 2: Designing effective agents\n\u2022 Ch 4: Building agents in Copilot Studio\n\u2022 Ch 5: Building autonomous agents\n\nVideo Reference:\nLinkedIn Learning: How to Create AI Agents Like a Pro in Copilot Studio (Microsoft Press)\n\u2022 Section 1: Agent Confusion Crisis \u2014 Autonomous agents, No-code & low-code agents\n\u2022 Section 2: FAQ Responder \u2014 Natural language creation, Configure instructions, Publishing agent"
     },
     {
       "id": "as12",
@@ -143,29 +495,29 @@
       "type": "other",
       "weight": "",
       "done": false,
-      "notes": "ASYNC WEEK — No formal class, but Prof. Whitaker available 6:15–9:45 PM\n\nEven though class does not meet on Nov 30, Prof. Whitaker will be available for in-person or Zoom consultation during class time for any student who wishes to discuss any aspect of their final project.\n\nStudent Activity:\nSet aside time to make progress on your final project and spread your work evenly over time."
+      "notes": "ASYNC WEEK \u2014 No formal class, but Prof. Whitaker available 6:15\u20139:45 PM\n\nEven though class does not meet on Nov 30, Prof. Whitaker will be available for in-person or Zoom consultation during class time for any student who wishes to discuss any aspect of their final project.\n\nStudent Activity:\nSet aside time to make progress on your final project and spread your work evenly over time."
     },
     {
       "id": "as14",
       "cls": "analytics",
-      "title": "Final Project Work — Individual Meetings I",
+      "title": "Final Project Work \u2014 Individual Meetings I",
       "date": "2026-12-07",
       "time": "18:15",
       "type": "other",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 207, 6:15–9:45 PM\n\nProf. Whitaker will meet with every student individually to make sure every student has a clear plan for success on their final project."
+      "notes": "IN-PERSON \u2014 Room 207, 6:15\u20139:45 PM\n\nProf. Whitaker will meet with every student individually to make sure every student has a clear plan for success on their final project."
     },
     {
       "id": "as15",
       "cls": "analytics",
-      "title": "Final Project Work — Individual Meetings II",
+      "title": "Final Project Work \u2014 Individual Meetings II",
       "date": "2026-12-14",
       "time": "18:15",
       "type": "other",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 207, 6:15–9:45 PM\n\nProf. Whitaker will meet with every student individually to make sure he understands each final project. This is the last class meeting before the final project is due Sunday Dec 20, 9:00 AM."
+      "notes": "IN-PERSON \u2014 Room 207, 6:15\u20139:45 PM\n\nProf. Whitaker will meet with every student individually to make sure he understands each final project. This is the last class meeting before the final project is due Sunday Dec 20, 9:00 AM."
     },
     {
       "id": "a1",
@@ -175,7 +527,7 @@
       "time": "17:00",
       "type": "deliverable",
       "weight": "25% (Homework total)",
-      "notes": "Submit via Canvas. Collaboration groups of up to 5 allowed — include group member names in submission notes. Submit your own file.",
+      "notes": "Submit via Canvas. Collaboration groups of up to 5 allowed \u2014 include group member names in submission notes. Submit your own file.",
       "done": false
     },
     {
@@ -319,7 +671,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "Topic: What is Ethics? An Introduction\n\nTo Read:\na) Wight, Ethics in Economics, Ch 1, \"Why Ethics Matters\"\nb) Badaracco, Defining Moments, Ch 2, pp. 10-14\n\nTopics Covered:\n• Introductions and Course Overview\n• Where this course fits in the MBA curriculum\n• A focus on values and actions\n• Ethical Decision-Making: Relativism, personal values, moral principles, moral reasoning\n• Steve Lewis Case Discussion\n• Introduction to Dr. Jonathan Whitaker and Analytics"
+      "notes": "Topic: What is Ethics? An Introduction\n\nTo Read:\na) Wight, Ethics in Economics, Ch 1, \"Why Ethics Matters\"\nb) Badaracco, Defining Moments, Ch 2, pp. 10-14\n\nTopics Covered:\n\u2022 Introductions and Course Overview\n\u2022 Where this course fits in the MBA curriculum\n\u2022 A focus on values and actions\n\u2022 Ethical Decision-Making: Relativism, personal values, moral principles, moral reasoning\n\u2022 Steve Lewis Case Discussion\n\u2022 Introduction to Dr. Jonathan Whitaker and Analytics"
     },
     {
       "id": "et1a",
@@ -330,7 +682,7 @@
       "type": "deliverable",
       "weight": "Participation (30%)",
       "done": false,
-      "notes": "Go to Canvas → Course Documents → Week 1.\n\nAfter reading Chapter 1, close the book. Write out one or two ideas that struck a chord with you. Answer: Have you encountered these ideas before in the workplace? Are there perspectives you would add or disagree with?\n\nBe prepared to discuss your answers in class."
+      "notes": "Go to Canvas \u2192 Course Documents \u2192 Week 1.\n\nAfter reading Chapter 1, close the book. Write out one or two ideas that struck a chord with you. Answer: Have you encountered these ideas before in the workplace? Are there perspectives you would add or disagree with?\n\nBe prepared to discuss your answers in class."
     },
     {
       "id": "et1b",
@@ -363,7 +715,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "Topic: What is Ethical Pluralism? Three Moral Frameworks\n\nCanvas → Course Documents → Week 2\n\nConsequentialism (Outcome-Based Ethics):\na) Wight, Ethics in Economics, Ch 2, \"Outcomes\"\nb) Optional: BR 7-9, J.S. Mill, \"What Utilitarianism Is\" (Handout)\n\nDeontology (Duty-Based Ethics):\na) Wight, Ethics in Economics, Ch 3, \"Duties, Rules, and Virtues\" (up to p. 46)\nb) BR 13 B-C, \"Kant's Second Categorical Imperative in Practice\" (Handout)\n\nVirtue (Character-Based Ethics):\na) Wight, Ethics in Economics, Ch 3, \"Duties, Rules, and Virtues\" (p. 46 - end)\nb) Optional: BR 14-15, Aristotle's Virtue Ethics (Handout)"
+      "notes": "Topic: What is Ethical Pluralism? Three Moral Frameworks\n\nCanvas \u2192 Course Documents \u2192 Week 2\n\nConsequentialism (Outcome-Based Ethics):\na) Wight, Ethics in Economics, Ch 2, \"Outcomes\"\nb) Optional: BR 7-9, J.S. Mill, \"What Utilitarianism Is\" (Handout)\n\nDeontology (Duty-Based Ethics):\na) Wight, Ethics in Economics, Ch 3, \"Duties, Rules, and Virtues\" (up to p. 46)\nb) BR 13 B-C, \"Kant's Second Categorical Imperative in Practice\" (Handout)\n\nVirtue (Character-Based Ethics):\na) Wight, Ethics in Economics, Ch 3, \"Duties, Rules, and Virtues\" (p. 46 - end)\nb) Optional: BR 14-15, Aristotle's Virtue Ethics (Handout)"
     },
     {
       "id": "et2a",
@@ -396,7 +748,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "Topic: Capitalism and Corporate Responsibility\n\nTo Read:\n• Friedman article (Canvas)\n• Nash article (Canvas)\n\nTopics Covered:\n• Key aspects of capitalism\n• Corporate moral agency\n• The social environment today\n• Case Discussions — Corporate Social Responsibility Debate Exercise\n• Stakeholder relations\n• Obligations to society"
+      "notes": "Topic: Capitalism and Corporate Responsibility\n\nTo Read:\n\u2022 Friedman article (Canvas)\n\u2022 Nash article (Canvas)\n\nTopics Covered:\n\u2022 Key aspects of capitalism\n\u2022 Corporate moral agency\n\u2022 The social environment today\n\u2022 Case Discussions \u2014 Corporate Social Responsibility Debate Exercise\n\u2022 Stakeholder relations\n\u2022 Obligations to society"
     },
     {
       "id": "et4r",
@@ -407,7 +759,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "ASYNC WEEK\n\nTo Read:\nWight, Ethics in Economics, Ch 4\n\nMidterm Exam opens — complete anytime between Sep 15 and Sep 22."
+      "notes": "ASYNC WEEK\n\nTo Read:\nWight, Ethics in Economics, Ch 4\n\nMidterm Exam opens \u2014 complete anytime between Sep 15 and Sep 22."
     },
     {
       "id": "et4m",
@@ -451,12 +803,12 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "ASYNC WEEK\n\nWatch:\n• \"Building an Ethical Culture — Part I\" (5 min) and Part II (10 min), Markkula Center for Applied Business Ethics\n\nOptional:\n• Markkula Center, \"Ethics and Virtue\" (scu.edu)\n\nRead articles about consequentialism, deontology, and virtue ethics."
+      "notes": "ASYNC WEEK\n\nWatch:\n\u2022 \"Building an Ethical Culture \u2014 Part I\" (5 min) and Part II (10 min), Markkula Center for Applied Business Ethics\n\nOptional:\n\u2022 Markkula Center, \"Ethics and Virtue\" (scu.edu)\n\nRead articles about consequentialism, deontology, and virtue ethics."
     },
     {
       "id": "et7a",
       "cls": "ethics",
-      "title": "Session 7: AI at Work — Prepare Examples",
+      "title": "Session 7: AI at Work \u2014 Prepare Examples",
       "date": "2026-10-06",
       "time": "",
       "type": "deliverable",
@@ -473,29 +825,29 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 224, 6:15–9:45 PM\n\nTopic: AI and Ethics\nGuest Speaker: Brian Gillikin, IBM\n\nTo Read/Discuss:\n• AI Current Event Article (TBD)\n• Burn Book, Chapter 9\n\nPanel Discussion: How do you use AI at work?"
+      "notes": "IN-PERSON \u2014 Room 224, 6:15\u20139:45 PM\n\nTopic: AI and Ethics\nGuest Speaker: Brian Gillikin, IBM\n\nTo Read/Discuss:\n\u2022 AI Current Event Article (TBD)\n\u2022 Burn Book, Chapter 9\n\nPanel Discussion: How do you use AI at work?"
     },
     {
       "id": "et9r",
       "cls": "ethics",
-      "title": "Session 9: Shannon Vallor — AI as a Mirror",
+      "title": "Session 9: Shannon Vallor \u2014 AI as a Mirror",
       "date": "2026-10-27",
       "time": "",
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "ASYNC WEEK\n\nWatch Shannon Vallor movie — AI as a mirror."
+      "notes": "ASYNC WEEK\n\nWatch Shannon Vallor movie \u2014 AI as a mirror."
     },
     {
       "id": "et10a",
       "cls": "ethics",
-      "title": "Session 10: Group Meeting — Select Final Case",
+      "title": "Session 10: Group Meeting \u2014 Select Final Case",
       "date": "2026-11-03",
       "time": "",
       "type": "deliverable",
       "weight": "Team Presentation (35%)",
       "done": false,
-      "notes": "ASYNC WEEK\n\nMeet with your group. Select case for final project — topic due Nov 17.\n\nBegin planning final presentation with group.\n\nExample cases: Boeing, Wells Fargo, Blood for Sale, Orchid ID"
+      "notes": "ASYNC WEEK\n\nMeet with your group. Select case for final project \u2014 topic due Nov 17.\n\nBegin planning final presentation with group.\n\nExample cases: Boeing, Wells Fargo, Blood for Sale, Orchid ID"
     },
     {
       "id": "et11r",
@@ -506,18 +858,18 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "ASYNC WEEK\n\nAssigned reading for Dr. Bosse's November 11th Strategy class:\n• \"I Helped Run Lululemon: Companies Need to Stop Kidding Themselves about AI\" (Julie Averill, 2026)\n• Case: Tyme Group Goes Global\n\nNote: Nov 11 is Dr. Bosse's class on Corporate Governance & Ethics."
+      "notes": "ASYNC WEEK\n\nAssigned reading for Dr. Bosse's November 11th Strategy class:\n\u2022 \"I Helped Run Lululemon: Companies Need to Stop Kidding Themselves about AI\" (Julie Averill, 2026)\n\u2022 Case: Tyme Group Goes Global\n\nNote: Nov 11 is Dr. Bosse's class on Corporate Governance & Ethics."
     },
     {
       "id": "et12r",
       "cls": "ethics",
-      "title": "Session 12 Readings: Legal & Ethical Issues — Employees",
+      "title": "Session 12 Readings: Legal & Ethical Issues \u2014 Employees",
       "date": "2026-11-17",
       "time": "",
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 224, 6:15–9:45 PM\n\nTopic: Legal & Ethical Issues Involving Employees\n\nTo Read & Discuss:\nHBR Enron Case"
+      "notes": "IN-PERSON \u2014 Room 224, 6:15\u20139:45 PM\n\nTopic: Legal & Ethical Issues Involving Employees\n\nTo Read & Discuss:\nHBR Enron Case"
     },
     {
       "id": "et12a",
@@ -539,7 +891,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 224, 6:15–9:45 PM\n\nTopics:\n• Leadership & Ethics (Virtue Ethics)\n• Ethics in Advertising & Marketing — Guest Speaker: Ron Carey\n• Sustainability and Ethics — Sustainability Case (TBD)\n• Enron Case Discussion, continued"
+      "notes": "IN-PERSON \u2014 Room 224, 6:15\u20139:45 PM\n\nTopics:\n\u2022 Leadership & Ethics (Virtue Ethics)\n\u2022 Ethics in Advertising & Marketing \u2014 Guest Speaker: Ron Carey\n\u2022 Sustainability and Ethics \u2014 Sustainability Case (TBD)\n\u2022 Enron Case Discussion, continued"
     },
     {
       "id": "et14r",
@@ -550,7 +902,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 224, 6:15–9:45 PM — LAST CLASS\n\nTopics:\n• Leadership & Ethics — Guest Speaker\n• Ethical Issues Involving International Markets\n• Roussel-Uclaf Case (Defining Moments)\n• Other Business Ethics Issues\n• Responsibilities to Stakeholders & Employees\n• Group presentations (if needed)"
+      "notes": "IN-PERSON \u2014 Room 224, 6:15\u20139:45 PM \u2014 LAST CLASS\n\nTopics:\n\u2022 Leadership & Ethics \u2014 Guest Speaker\n\u2022 Ethical Issues Involving International Markets\n\u2022 Roussel-Uclaf Case (Defining Moments)\n\u2022 Other Business Ethics Issues\n\u2022 Responsibilities to Stakeholders & Employees\n\u2022 Group presentations (if needed)"
     },
     {
       "id": "et15p",
@@ -561,18 +913,18 @@
       "type": "presentation",
       "weight": "Team Presentation (35%)",
       "done": false,
-      "notes": "Tuesday, December 15th, 6:15–9:30 PM\n\nGroup Presentations — Final exam period."
+      "notes": "Tuesday, December 15th, 6:15\u20139:30 PM\n\nGroup Presentations \u2014 Final exam period."
     },
     {
       "id": "st1",
       "cls": "strategy",
       "title": "Extra Credit: Course Evaluation (SEI) Screenshot",
-      "date": "2026-12-09",
+      "date": "2026-12-08",
       "time": "17:00",
       "type": "deliverable",
       "weight": "1% extra credit",
       "done": false,
-      "notes": "Earn 1% extra credit by submitting a screenshot showing you have completed the course evaluation (SEI).\n\nEmail your screenshot to Dr. Bosse by 5:00 PM on December 9, 2026."
+      "notes": "Earn 1% extra credit by submitting a screenshot showing you have completed the course evaluation (SEI).\n\nEmail your screenshot to Dr. Bosse by 5:00 PM on December 8, 2026."
     },
     {
       "id": "st2",
@@ -583,7 +935,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 225, 6:15–9:45 PM\n\nPrepare Before Class:\n• Read syllabus\n• WSJ Practice application (emailed to you)\n• Chapter 1\n• Watch video: \"Inside the Case Method\"\n• Online Tutorial @ HBSP: Case Analysis Coach\n\nIn Class:\n• Introduction\n• Chapter 1: Firm Performance\n• Strategy Tools & Theories\n• Strategic Case Analysis\n• Ideal 10-Slide Deck Template and examples\n• Pick teams (6 teams of 3 people)\n• Pick firm for individual project"
+      "notes": "IN-PERSON \u2014 Room 225, 6:15\u20139:45 PM\n\nPrepare Before Class:\n\u2022 Read syllabus\n\u2022 WSJ Practice application (emailed to you)\n\u2022 Chapter 1\n\u2022 Watch video: \"Inside the Case Method\"\n\u2022 Online Tutorial @ HBSP: Case Analysis Coach\n\nIn Class:\n\u2022 Introduction\n\u2022 Chapter 1: Firm Performance\n\u2022 Strategy Tools & Theories\n\u2022 Strategic Case Analysis\n\u2022 Ideal 10-Slide Deck Template and examples\n\u2022 Pick teams (6 teams of 3 people)\n\u2022 Pick firm for individual project"
     },
     {
       "id": "st3",
@@ -594,7 +946,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 225, 6:15–9:45 PM\n\nPrepare Before Class:\n• WSJ Practice application\n• Chapter 2\n• Watch video: \"How to Crack Case Study Interviews\"\n\nIn Class:\n• Problem Identification: External Analysis\n• Chapter 2\n• Case 1: Oura 2025 (Harvard)"
+      "notes": "IN-PERSON \u2014 Room 225, 6:15\u20139:45 PM\n\nPrepare Before Class:\n\u2022 WSJ Practice application\n\u2022 Chapter 2\n\u2022 Watch video: \"How to Crack Case Study Interviews\"\n\nIn Class:\n\u2022 Problem Identification: External Analysis\n\u2022 Chapter 2\n\u2022 Case 1: Oura 2025 (Harvard)"
     },
     {
       "id": "st3c",
@@ -616,7 +968,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 225, 6:15–9:45 PM\n\nPrepare Before Class:\n• WSJ Practice application\n• Chapter 3\n\nIn Class:\n• Problem Identification: Internal Analysis\n• Chapter 3\n• Case 2: Milo's Tea (Harvard)"
+      "notes": "IN-PERSON \u2014 Room 225, 6:15\u20139:45 PM\n\nPrepare Before Class:\n\u2022 WSJ Practice application\n\u2022 Chapter 3\n\nIn Class:\n\u2022 Problem Identification: Internal Analysis\n\u2022 Chapter 3\n\u2022 Case 2: Milo's Tea (Harvard)"
     },
     {
       "id": "st4c",
@@ -638,7 +990,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 225, 6:15–9:45 PM\n\nPrepare Before Class:\n• WSJ Practice application\n• Chapter 4\n\nIn Class:\n• Business-Level Strategy: Cost Advantage\n• Chapter 4\n• Case 3: Karya (Berkeley)"
+      "notes": "IN-PERSON \u2014 Room 225, 6:15\u20139:45 PM\n\nPrepare Before Class:\n\u2022 WSJ Practice application\n\u2022 Chapter 4\n\nIn Class:\n\u2022 Business-Level Strategy: Cost Advantage\n\u2022 Chapter 4\n\u2022 Case 3: Karya (Berkeley)"
     },
     {
       "id": "st5c",
@@ -660,7 +1012,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 225, 6:15–9:45 PM\nGuest: Dr. Trey Sutton\n\nPrepare Before Class:\n• WSJ Practice application\n• Costanza, 1989, \"What is ecological economics?\" pages 1-5 (WSJ folder on Blackboard)\n• \"Decoupling-Debunked\" pages 3-5 (WSJ folder on Blackboard)\n\nIn Class:\n• Sustainability\n• Case 4: University of Richmond (Student team analyses)"
+      "notes": "IN-PERSON \u2014 Room 225, 6:15\u20139:45 PM\nGuest: Dr. Trey Sutton\n\nPrepare Before Class:\n\u2022 WSJ Practice application\n\u2022 Costanza, 1989, \"What is ecological economics?\" pages 1-5 (WSJ folder on Blackboard)\n\u2022 \"Decoupling-Debunked\" pages 3-5 (WSJ folder on Blackboard)\n\nIn Class:\n\u2022 Sustainability\n\u2022 Case 4: University of Richmond (Student team analyses)"
     },
     {
       "id": "st6c",
@@ -682,7 +1034,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 225, 6:15–9:45 PM\n\nPrepare Before Class:\n• WSJ Practice application\n• Chapter 5\n\nIn Class:\n• Business-Level Strategy: Differentiation\n• Chapter 5\n• Case 5: Chick-fil-A (McGraw Hill)"
+      "notes": "IN-PERSON \u2014 Room 225, 6:15\u20139:45 PM\n\nPrepare Before Class:\n\u2022 WSJ Practice application\n\u2022 Chapter 5\n\nIn Class:\n\u2022 Business-Level Strategy: Differentiation\n\u2022 Chapter 5\n\u2022 Case 5: Chick-fil-A (McGraw Hill)"
     },
     {
       "id": "st7c",
@@ -704,18 +1056,18 @@
       "type": "deliverable",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 225, Full class\n\nRSB Librarian Carrie Ludovico will lead a research session. Individual meetings with her available upon request.\n\nPrepare Before Class:\n• First draft of situation (external and internal) analysis of your individual project firm\n• Come prepared with specific questions about your research"
+      "notes": "IN-PERSON \u2014 Room 225, Full class\n\nRSB Librarian Carrie Ludovico will lead a research session. Individual meetings with her available upon request.\n\nPrepare Before Class:\n\u2022 First draft of situation (external and internal) analysis of your individual project firm\n\u2022 Come prepared with specific questions about your research"
     },
     {
       "id": "st9",
       "cls": "strategy",
-      "title": "Weeks 8–11: Individual Project Work Period",
+      "title": "Weeks 8\u201311: Individual Project Work Period",
       "date": "2026-10-14",
       "time": "",
       "type": "deliverable",
       "weight": "",
       "done": false,
-      "notes": "NO CLASS MEETINGS — Weeks of Oct 14, 21, 28, Nov 4\n\nUse this time to complete your individual project. Suggested weekly milestones:\n\nWeek 8 (Oct 14): Situation Analysis, Generating Alternatives\nWeek 9 (Oct 21): Applying Decision Criteria, Formulating Recommendations\nWeek 10 (Oct 28): Financial Analysis, Implementation Plan\nWeek 11 (Nov 4): Risks and Contingencies, Metrics, Proofread\n\n⚠️ Do NOT submit these each week — the complete analysis is due Dec 8."
+      "notes": "NO CLASS MEETINGS \u2014 Weeks of Oct 14, 21, 28, Nov 4\n\nUse this time to complete your individual project. Suggested weekly milestones:\n\nWeek 8 (Oct 14): Situation Analysis, Generating Alternatives\nWeek 9 (Oct 21): Applying Decision Criteria, Formulating Recommendations\nWeek 10 (Oct 28): Financial Analysis, Implementation Plan\nWeek 11 (Nov 4): Risks and Contingencies, Metrics, Proofread\n\n\u26a0\ufe0f Do NOT submit these each week \u2014 the complete analysis is due Dec 8."
     },
     {
       "id": "st10",
@@ -726,7 +1078,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 225, Wednesday Nov 11 (Dr. Bosse's class)\nGuest: Dr. Mary Lynn Lunn\n\nPrepare Before Class:\n• WSJ Practice application\n• Chapter 13\n\nNote: Ethics assigned reading for this session:\n• \"I Helped Run Lululemon: Companies Need to Stop Kidding Themselves about AI\" (Julie Averill, 2026)\n• Case: Tyme Group Goes Global\n\nIn Class:\n• Corporate Governance and Ethics\n• Chapter 13\n• Case 6: Tyme Group (Harvard)"
+      "notes": "IN-PERSON \u2014 Room 225, Wednesday Nov 11 (Dr. Bosse's class)\nGuest: Dr. Mary Lynn Lunn\n\nPrepare Before Class:\n\u2022 WSJ Practice application\n\u2022 Chapter 13\n\nNote: Ethics assigned reading for this session:\n\u2022 \"I Helped Run Lululemon: Companies Need to Stop Kidding Themselves about AI\" (Julie Averill, 2026)\n\u2022 Case: Tyme Group Goes Global\n\nIn Class:\n\u2022 Corporate Governance and Ethics\n\u2022 Chapter 13\n\u2022 Case 6: Tyme Group (Harvard)"
     },
     {
       "id": "st10c",
@@ -748,7 +1100,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 225, 6:15–9:45 PM\n\nPrepare Before Class:\n• WSJ Practice application\n• Chapter 6\n\nIn Class:\n• Corporate Strategy\n• Chapter 6\n• Case 7: Walt Disney Company (McGraw Hill)"
+      "notes": "IN-PERSON \u2014 Room 225, 6:15\u20139:45 PM\n\nPrepare Before Class:\n\u2022 WSJ Practice application\n\u2022 Chapter 6\n\nIn Class:\n\u2022 Corporate Strategy\n\u2022 Chapter 6\n\u2022 Case 7: Walt Disney Company (McGraw Hill)"
     },
     {
       "id": "st11c",
@@ -770,7 +1122,7 @@
       "type": "reading",
       "weight": "",
       "done": false,
-      "notes": "IN-PERSON — Room 225, 6:15–9:45 PM\n\nPrepare Before Class:\n• Watch video: \"Steve Jobs' 2005 Stanford Commencement Address\"\n• Case 8 Documentary film discussion questions — individuals (accessed via Blackboard)\n\nIn Class:\n• Strategic Management of Your Career\n• Exercise: in class\n• Case 8: Circuit City (in-class group discussion)\n• Course wrap-up exercise"
+      "notes": "IN-PERSON \u2014 Room 225, 6:15\u20139:45 PM\n\nPrepare Before Class:\n\u2022 Watch video: \"Steve Jobs' 2005 Stanford Commencement Address\"\n\u2022 Case 8 Documentary film discussion questions \u2014 individuals (accessed via Blackboard)\n\nIn Class:\n\u2022 Strategic Management of Your Career\n\u2022 Exercise: in class\n\u2022 Case 8: Circuit City (in-class group discussion)\n\u2022 Course wrap-up exercise"
     },
     {
       "id": "st12a",
@@ -787,12 +1139,12 @@
       "id": "st13",
       "cls": "strategy",
       "title": "Individual Project DUE",
-      "date": "2026-12-09",
+      "date": "2026-12-08",
       "time": "22:00",
       "type": "deliverable",
       "weight": "",
       "done": false,
-      "notes": "Final individual project due at 10:00 PM.\n\nComplete strategic case analysis including:\n• Situation analysis (external and internal)\n• Generating alternatives\n• Applying decision criteria\n• Formulating recommendations\n• Financial analysis\n• Implementation plan\n• Risks and contingencies\n• Metrics"
+      "notes": "Final individual project due at 10:00 PM.\n\nComplete strategic case analysis including:\n\u2022 Situation analysis (external and internal)\n\u2022 Generating alternatives\n\u2022 Applying decision criteria\n\u2022 Formulating recommendations\n\u2022 Financial analysis\n\u2022 Implementation plan\n\u2022 Risks and contingencies\n\u2022 Metrics"
     }
   ],
   "social": [
@@ -818,7 +1170,7 @@
       "tags": [
         "robins"
       ],
-      "notes": "4:00 PM — Arrive to dress and photos\n5:00 PM — Doors open for families\n5:30 PM — Ceremony begins\n6:30–8:30 PM — Reception in Molechert Commons"
+      "notes": "4:00 PM \u2014 Arrive to dress and photos\n5:00 PM \u2014 Doors open for families\n5:30 PM \u2014 Ceremony begins\n6:30\u20138:30 PM \u2014 Reception in Molechert Commons"
     },
     {
       "id": "s3",
@@ -830,7 +1182,7 @@
       "tags": [
         "robins"
       ],
-      "notes": "Slide decks due by 8:00 AM — NO CHANGES after 8:00 AM.\nBe seated by 9:05 AM.\n\n8:00–9:00 AM · Breakfast\n9:05–9:10 AM · Welcome Remarks (Amy McCracken)\n9:10–12:05 PM · Team Presentations (5 teams)\n12:10–12:45 PM · Break / Judges Deliberate\n12:45–1:25 PM · Winners Announced & Feedback\n1:25–1:40 PM · Closing Remarks"
+      "notes": "Slide decks due by 8:00 AM \u2014 NO CHANGES after 8:00 AM.\nBe seated by 9:05 AM.\n\n8:00\u20139:00 AM \u00b7 Breakfast\n9:05\u20139:10 AM \u00b7 Welcome Remarks (Amy McCracken)\n9:10\u201312:05 PM \u00b7 Team Presentations (5 teams)\n12:10\u201312:45 PM \u00b7 Break / Judges Deliberate\n12:45\u20131:25 PM \u00b7 Winners Announced & Feedback\n1:25\u20131:40 PM \u00b7 Closing Remarks"
     },
     {
       "id": "s4",
@@ -848,7 +1200,7 @@
     },
     {
       "id": "s5",
-      "title": "Encorepreneur! — What's Next? 50 Years of Inspiring Curiosity",
+      "title": "Encorepreneur! \u2014 What's Next? 50 Years of Inspiring Curiosity",
       "date": "2026-08-25",
       "time": "08:00",
       "endTime": "09:30",
@@ -868,7 +1220,7 @@
       "tags": [
         "networking"
       ],
-      "notes": "Capsule wardrobe workshop — simplify your wardrobe, reduce decision fatigue, save time and money."
+      "notes": "Capsule wardrobe workshop \u2014 simplify your wardrobe, reduce decision fatigue, save time and money."
     },
     {
       "id": "s7",
@@ -881,7 +1233,7 @@
         "networking",
         "social"
       ],
-      "notes": "Kick off the 2026–2027 ACG Richmond program year. Casual networking, light hors d'oeuvres, and tasty spirits."
+      "notes": "Kick off the 2026\u20132027 ACG Richmond program year. Casual networking, light hors d'oeuvres, and tasty spirits."
     },
     {
       "id": "s8",
@@ -906,11 +1258,11 @@
       "tags": [
         "social"
       ],
-      "notes": "Families and significant others welcome! SLC will provide hamburgers and hotdogs — please bring a dish, dessert, or drinks to share."
+      "notes": "Families and significant others welcome! SLC will provide hamburgers and hotdogs \u2014 please bring a dish, dessert, or drinks to share."
     },
     {
       "id": "s10",
-      "title": "ACG September Breakfast — AI with Dean Maye",
+      "title": "ACG September Breakfast \u2014 AI with Dean Maye",
       "date": "2026-09-18",
       "time": "07:30",
       "endTime": "09:00",
